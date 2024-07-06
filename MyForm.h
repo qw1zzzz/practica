@@ -243,16 +243,32 @@ namespace app {
 
 		//// Маска
 		private: System::Void маскаToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-		ClearToNewTask();
+			ClearToNewTask();
 
-		tB_title->Text = " Задание:\r\n Вывести из массива, состоящего из 20 элементов, числа удовлетворяющие маске.";
-		InputData^ f_input = gcnew InputData;
-		if (f_input->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
-			String^ sRes = f_input->GetText();
-			if (sRes == "") {
+			tB_title->Text = " Задание:\r\n Вывести из массива, состоящего из 20 элементов, числа удовлетворяющие маске.";
+			InputData^ f_input = gcnew InputData;
+			if (f_input->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+				String^ sRes = f_input->GetText();
+				if (sRes == "") {
+					return;
+				}
+
+				int nRes = Convert::ToInt32(sRes);
+				int nNumber, nCount = 0;
+				for (int i = 0; i < 20; i++) {
+					nNumber = rand();
+					if ((nNumber & nRes) == nRes) {
+						lB_output->Items->Add(nNumber);
+						nCount++;
+					}
+				}
+				tB_title->AppendText("\r\n В список были добавлено " + Convert::ToString(nCount) + " элементов, удовлетворящие условию маски");
+			}
+			else {
+				f_input->Close();
 				return;
 			}
-		}
+
 		}
 	};
 }
