@@ -1,0 +1,5 @@
+D:\projects\app\Debug\app.vcxproj.AssemblyReference.cache
+D:\projects\app\Debug\app.MyForm.resources
+D:\projects\app\Debug\app.vcxproj.GenerateResource.cache
+D:\projects\app\Debug\app.exe
+D:\projects\app\Debug\app.InputData.resources

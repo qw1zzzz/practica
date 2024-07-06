@@ -1,4 +1,7 @@
 #pragma once
+#include <stdlib.h>
+#include "InputData.h"
+
 
 namespace app {
 
@@ -73,8 +76,8 @@ namespace app {
 			this->êëàññûToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->âûõîäÈçAppToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
-			this->panel2 = (gcnew System::Windows::Forms::Panel());
 			this->tB_title = (gcnew System::Windows::Forms::TextBox());
+			this->panel2 = (gcnew System::Windows::Forms::Panel());
 			this->lB_output = (gcnew System::Windows::Forms::ListBox());
 			this->menu->SuspendLayout();
 			this->panel1->SuspendLayout();
@@ -102,6 +105,7 @@ namespace app {
 			this->ìàñêàToolStripMenuItem->Name = L"ìàñêàToolStripMenuItem";
 			this->ìàñêàToolStripMenuItem->Size = System::Drawing::Size(69, 25);
 			this->ìàñêàToolStripMenuItem->Text = L"Ìàñêà";
+			this->ìàñêàToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::ìàñêàToolStripMenuItem_Click);
 			// 
 			// ïåðâûéÑåìåñòðToolStripMenuItem
 			// 
@@ -145,6 +149,7 @@ namespace app {
 			this->âûõîäÈçAppToolStripMenuItem->Name = L"âûõîäÈçAppToolStripMenuItem";
 			this->âûõîäÈçAppToolStripMenuItem->Size = System::Drawing::Size(121, 25);
 			this->âûõîäÈçAppToolStripMenuItem->Text = L"Âûõîä èç app";
+			this->âûõîäÈçAppToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::âûõîäÈçAppToolStripMenuItem_Click);
 			// 
 			// panel1
 			// 
@@ -154,16 +159,6 @@ namespace app {
 			this->panel1->Name = L"panel1";
 			this->panel1->Size = System::Drawing::Size(1589, 93);
 			this->panel1->TabIndex = 1;
-			// 
-			// panel2
-			// 
-			this->panel2->BackColor = System::Drawing::SystemColors::Control;
-			this->panel2->Controls->Add(this->lB_output);
-			this->panel2->Dock = System::Windows::Forms::DockStyle::Left;
-			this->panel2->Location = System::Drawing::Point(0, 122);
-			this->panel2->Name = L"panel2";
-			this->panel2->Size = System::Drawing::Size(241, 397);
-			this->panel2->TabIndex = 2;
 			// 
 			// tB_title
 			// 
@@ -179,6 +174,16 @@ namespace app {
 			this->tB_title->Size = System::Drawing::Size(1589, 93);
 			this->tB_title->TabIndex = 0;
 			this->tB_title->Text = L"Òåêñò çàäàíèÿ";
+			// 
+			// panel2
+			// 
+			this->panel2->BackColor = System::Drawing::SystemColors::Control;
+			this->panel2->Controls->Add(this->lB_output);
+			this->panel2->Dock = System::Windows::Forms::DockStyle::Left;
+			this->panel2->Location = System::Drawing::Point(0, 122);
+			this->panel2->Name = L"panel2";
+			this->panel2->Size = System::Drawing::Size(241, 397);
+			this->panel2->TabIndex = 2;
 			// 
 			// lB_output
 			// 
@@ -198,6 +203,8 @@ namespace app {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+				static_cast<System::Int32>(static_cast<System::Byte>(64)));
 			this->ClientSize = System::Drawing::Size(1589, 519);
 			this->Controls->Add(this->panel2);
 			this->Controls->Add(this->panel1);
@@ -217,5 +224,35 @@ namespace app {
 
 		}
 #pragma endregion
+		
+		// Âûõîä ÷åðåç êíîïêó
+		private: System::Void âûõîäÈçAppToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+			exit(0);
+		}
+
+		// Î÷èñòêà ïðè çàãðóçêå
+		private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
+			ClearToNewTask();
+		}
+
+		// Î÷èñòêà èíòåðôåéñà
+		public:  void ClearToNewTask() {
+			tB_title->Text = "Âûáèðåòå ïóíêò ìåíþ äëÿ ðåøåíèÿ çàäà÷è.";
+			lB_output->Items->Clear();
+		}
+
+		//// Ìàñêà
+		private: System::Void ìàñêàToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		ClearToNewTask();
+
+		tB_title->Text = " Çàäàíèå:\r\n Âûâåñòè èç ìàññèâà, ñîñòîÿùåãî èç 20 ýëåìåíòîâ, ÷èñëà óäîâëåòâîðÿþùèå ìàñêå.";
+		InputData^ f_input = gcnew InputData;
+		if (f_input->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+			String^ sRes = f_input->GetText();
+			if (sRes == "") {
+				return;
+			}
+		}
+		}
 	};
 }
