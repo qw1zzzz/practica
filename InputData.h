@@ -67,7 +67,7 @@ namespace app {
 			this->l_titleOfInput->AutoSize = true;
 			this->l_titleOfInput->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->l_titleOfInput->Location = System::Drawing::Point(69, 54);
+			this->l_titleOfInput->Location = System::Drawing::Point(117, 62);
 			this->l_titleOfInput->Name = L"l_titleOfInput";
 			this->l_titleOfInput->Size = System::Drawing::Size(152, 20);
 			this->l_titleOfInput->TabIndex = 0;
@@ -75,7 +75,7 @@ namespace app {
 			// 
 			// tB_answ
 			// 
-			this->tB_answ->Location = System::Drawing::Point(55, 95);
+			this->tB_answ->Location = System::Drawing::Point(103, 103);
 			this->tB_answ->Name = L"tB_answ";
 			this->tB_answ->Size = System::Drawing::Size(185, 20);
 			this->tB_answ->TabIndex = 1;
@@ -85,7 +85,7 @@ namespace app {
 			// 
 			this->b_true->DialogResult = System::Windows::Forms::DialogResult::OK;
 			this->b_true->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"b_true.Image")));
-			this->b_true->Location = System::Drawing::Point(73, 137);
+			this->b_true->Location = System::Drawing::Point(121, 145);
 			this->b_true->Name = L"b_true";
 			this->b_true->Size = System::Drawing::Size(38, 41);
 			this->b_true->TabIndex = 2;
@@ -96,7 +96,7 @@ namespace app {
 			// 
 			this->b_false->DialogResult = System::Windows::Forms::DialogResult::No;
 			this->b_false->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"b_false.Image")));
-			this->b_false->Location = System::Drawing::Point(183, 137);
+			this->b_false->Location = System::Drawing::Point(231, 145);
 			this->b_false->Name = L"b_false";
 			this->b_false->Size = System::Drawing::Size(38, 41);
 			this->b_false->TabIndex = 3;
@@ -107,7 +107,7 @@ namespace app {
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::Silver;
-			this->ClientSize = System::Drawing::Size(284, 216);
+			this->ClientSize = System::Drawing::Size(388, 258);
 			this->Controls->Add(this->b_false);
 			this->Controls->Add(this->b_true);
 			this->Controls->Add(this->tB_answ);

@@ -1,1 +1,3 @@
-﻿  app.vcxproj -> D:\projects\app\Debug\app.exe
+﻿  MyClasses.cpp
+  InputData.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
+  app.vcxproj -> D:\projects\app\Debug\app.exe

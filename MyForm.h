@@ -1,6 +1,7 @@
 #pragma once
-#include <stdlib.h>
 #include "InputData.h"
+#include "MyClasses.h"
+
 
 
 namespace app {
@@ -51,6 +52,7 @@ namespace app {
 	private: System::Windows::Forms::TextBox^ tB_title;
 	private: System::Windows::Forms::Panel^ panel2;
 	private: System::Windows::Forms::ListBox^ lB_output;
+	private: System::Windows::Forms::ToolStripMenuItem^ сведенияОПрограммистеToolStripMenuItem;
 
 	private:
 		/// <summary>
@@ -69,6 +71,7 @@ namespace app {
 			this->menu = (gcnew System::Windows::Forms::MenuStrip());
 			this->маскаToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->первыйСеместрToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->сведенияОПрограммистеToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->лабиринтToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->рекурсияИГрафикToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->сортировкаToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -109,9 +112,17 @@ namespace app {
 			// 
 			// первыйСеместрToolStripMenuItem
 			// 
+			this->первыйСеместрToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->сведенияОПрограммистеToolStripMenuItem });
 			this->первыйСеместрToolStripMenuItem->Name = L"первыйСеместрToolStripMenuItem";
 			this->первыйСеместрToolStripMenuItem->Size = System::Drawing::Size(149, 25);
 			this->первыйСеместрToolStripMenuItem->Text = L"Первый семестр";
+			// 
+			// сведенияОПрограммистеToolStripMenuItem
+			// 
+			this->сведенияОПрограммистеToolStripMenuItem->Name = L"сведенияОПрограммистеToolStripMenuItem";
+			this->сведенияОПрограммистеToolStripMenuItem->Size = System::Drawing::Size(281, 26);
+			this->сведенияОПрограммистеToolStripMenuItem->Text = L"Сведения о программисте";
+			this->сведенияОПрограммистеToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::сведенияОПрограммистеToolStripMenuItem_Click);
 			// 
 			// лабиринтToolStripMenuItem
 			// 
@@ -136,6 +147,7 @@ namespace app {
 			this->шифрованиеToolStripMenuItem->Name = L"шифрованиеToolStripMenuItem";
 			this->шифрованиеToolStripMenuItem->Size = System::Drawing::Size(120, 25);
 			this->шифрованиеToolStripMenuItem->Text = L"Шифрование";
+			this->шифрованиеToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::шифрованиеToolStripMenuItem_Click);
 			// 
 			// классыToolStripMenuItem
 			// 
@@ -241,7 +253,7 @@ namespace app {
 			lB_output->Items->Clear();
 		}
 
-		//// Маска
+		// Маска
 		private: System::Void маскаToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 			ClearToNewTask();
 
@@ -270,5 +282,41 @@ namespace app {
 			}
 
 		}
-	};
+
+		// Сведения о программисте
+		private: System::Void сведенияОПрограммистеToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+			ClearToNewTask();
+			tB_title->Text = " Программы выполнил cтудент 1 курса группы 1бИТС3: Ларин Артём Александрович.";
+		}
+
+		
+		// Шифрование
+		private: System::Void шифрованиеToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+			ClearToNewTask();
+			InputData^ ipd = gcnew InputData;
+
+			tB_title->Text = " Перевод строки в шифрованное состояние и обратно.";
+			ipd->SetLable("Введите текст для шифрования");
+
+			if (ipd->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+				String^ stext = ipd->GetText();
+				tB_title->AppendText("\r\n Введенная строка: \'");
+				tB_title->AppendText(stext + "\'");
+				ipd->Visible = false;
+
+				std::string ss;
+				StringToChar(stext, ss);
+				lB_output->Items->Add(" Шифрованный текст: ");
+				const char* sch = ss.c_str();
+				std::string shifr = EncodeText((char*)ss.c_str());
+				lB_output->Items->Add(CharToString((char*)shifr.c_str()));
+				lB_output->Items->Add("");
+
+				lB_output->Items->Add(" Расшифрованный текст: ");
+				std::string unshifr = DecodeText((char*)shifr.c_str());
+				lB_output->Items->Add(CharToString((char*)unshifr.c_str()));
+			}
+			ipd->Close();
+		}
+};
 }
