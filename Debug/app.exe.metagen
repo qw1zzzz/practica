@@ -24,5 +24,9 @@ Class app.InputData: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
 Class app.MyForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    _Action onAction : Public
+    _stRecursion* RecOut : Public, Static
   Methods:
     ClearToNewTask(): PrivateScope, Public, HideBySig
+    Recursion(): PrivateScope, Public, HideBySig

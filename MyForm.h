@@ -1,6 +1,10 @@
 #pragma once
+#include <Windows.h>
+#include <string>
 #include "InputData.h"
 #include "MyClasses.h"
+#include "MyHeader.h"
+#include "Recursion.h"
 
 
 
@@ -19,6 +23,9 @@ namespace app {
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
 	public:
+		static stRecursion* RecOut;
+		MyAction onAction;
+
 		MyForm(void)
 		{
 			InitializeComponent();
@@ -53,6 +60,12 @@ namespace app {
 	private: System::Windows::Forms::Panel^ panel2;
 	private: System::Windows::Forms::ListBox^ lB_output;
 	private: System::Windows::Forms::ToolStripMenuItem^ сведенияОПрограммистеToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ лабораторнаяРабота21ToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ лабораторнаяРабота22ToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ лабораторнаяРабота21ToolStripMenuItem1;
+	private: System::Windows::Forms::ToolStripMenuItem^ лабораторнаяРабота32ToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ лабораторнаяРабота4ToolStripMenuItem;
+	private: System::Windows::Forms::Panel^ p_output;
 
 	private:
 		/// <summary>
@@ -72,6 +85,11 @@ namespace app {
 			this->маскаToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->первыйСеместрToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->сведенияОПрограммистеToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->лабораторнаяРабота21ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->лабораторнаяРабота22ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->лабораторнаяРабота21ToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->лабораторнаяРабота32ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->лабораторнаяРабота4ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->лабиринтToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->рекурсияИГрафикToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->сортировкаToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -82,6 +100,7 @@ namespace app {
 			this->tB_title = (gcnew System::Windows::Forms::TextBox());
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
 			this->lB_output = (gcnew System::Windows::Forms::ListBox());
+			this->p_output = (gcnew System::Windows::Forms::Panel());
 			this->menu->SuspendLayout();
 			this->panel1->SuspendLayout();
 			this->panel2->SuspendLayout();
@@ -112,7 +131,11 @@ namespace app {
 			// 
 			// первыйСеместрToolStripMenuItem
 			// 
-			this->первыйСеместрToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->сведенияОПрограммистеToolStripMenuItem });
+			this->первыйСеместрToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(6) {
+				this->сведенияОПрограммистеToolStripMenuItem,
+					this->лабораторнаяРабота21ToolStripMenuItem, this->лабораторнаяРабота22ToolStripMenuItem, this->лабораторнаяРабота21ToolStripMenuItem1,
+					this->лабораторнаяРабота32ToolStripMenuItem, this->лабораторнаяРабота4ToolStripMenuItem
+			});
 			this->первыйСеместрToolStripMenuItem->Name = L"первыйСеместрToolStripMenuItem";
 			this->первыйСеместрToolStripMenuItem->Size = System::Drawing::Size(149, 25);
 			this->первыйСеместрToolStripMenuItem->Text = L"Первый семестр";
@@ -120,9 +143,40 @@ namespace app {
 			// сведенияОПрограммистеToolStripMenuItem
 			// 
 			this->сведенияОПрограммистеToolStripMenuItem->Name = L"сведенияОПрограммистеToolStripMenuItem";
-			this->сведенияОПрограммистеToolStripMenuItem->Size = System::Drawing::Size(281, 26);
+			this->сведенияОПрограммистеToolStripMenuItem->Size = System::Drawing::Size(301, 26);
 			this->сведенияОПрограммистеToolStripMenuItem->Text = L"Сведения о программисте";
 			this->сведенияОПрограммистеToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::сведенияОПрограммистеToolStripMenuItem_Click);
+			// 
+			// лабораторнаяРабота21ToolStripMenuItem
+			// 
+			this->лабораторнаяРабота21ToolStripMenuItem->Name = L"лабораторнаяРабота21ToolStripMenuItem";
+			this->лабораторнаяРабота21ToolStripMenuItem->Size = System::Drawing::Size(301, 26);
+			this->лабораторнаяРабота21ToolStripMenuItem->Text = L"Лабораторная работа №2.1";
+			this->лабораторнаяРабота21ToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::лабораторнаяРабота21ToolStripMenuItem_Click);
+			// 
+			// лабораторнаяРабота22ToolStripMenuItem
+			// 
+			this->лабораторнаяРабота22ToolStripMenuItem->Name = L"лабораторнаяРабота22ToolStripMenuItem";
+			this->лабораторнаяРабота22ToolStripMenuItem->Size = System::Drawing::Size(301, 26);
+			this->лабораторнаяРабота22ToolStripMenuItem->Text = L"Лабораторная работа №2.2";
+			// 
+			// лабораторнаяРабота21ToolStripMenuItem1
+			// 
+			this->лабораторнаяРабота21ToolStripMenuItem1->Name = L"лабораторнаяРабота21ToolStripMenuItem1";
+			this->лабораторнаяРабота21ToolStripMenuItem1->Size = System::Drawing::Size(301, 26);
+			this->лабораторнаяРабота21ToolStripMenuItem1->Text = L"Лабораторная работа №3.1";
+			// 
+			// лабораторнаяРабота32ToolStripMenuItem
+			// 
+			this->лабораторнаяРабота32ToolStripMenuItem->Name = L"лабораторнаяРабота32ToolStripMenuItem";
+			this->лабораторнаяРабота32ToolStripMenuItem->Size = System::Drawing::Size(301, 26);
+			this->лабораторнаяРабота32ToolStripMenuItem->Text = L"Лабораторная работа №3.2";
+			// 
+			// лабораторнаяРабота4ToolStripMenuItem
+			// 
+			this->лабораторнаяРабота4ToolStripMenuItem->Name = L"лабораторнаяРабота4ToolStripMenuItem";
+			this->лабораторнаяРабота4ToolStripMenuItem->Size = System::Drawing::Size(301, 26);
+			this->лабораторнаяРабота4ToolStripMenuItem->Text = L"Лабораторная работа №4";
 			// 
 			// лабиринтToolStripMenuItem
 			// 
@@ -135,6 +189,7 @@ namespace app {
 			this->рекурсияИГрафикToolStripMenuItem->Name = L"рекурсияИГрафикToolStripMenuItem";
 			this->рекурсияИГрафикToolStripMenuItem->Size = System::Drawing::Size(162, 25);
 			this->рекурсияИГрафикToolStripMenuItem->Text = L"Рекурсия и график";
+			this->рекурсияИГрафикToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::рекурсияИГрафикToolStripMenuItem_Click);
 			// 
 			// сортировкаToolStripMenuItem
 			// 
@@ -194,7 +249,7 @@ namespace app {
 			this->panel2->Dock = System::Windows::Forms::DockStyle::Left;
 			this->panel2->Location = System::Drawing::Point(0, 122);
 			this->panel2->Name = L"panel2";
-			this->panel2->Size = System::Drawing::Size(241, 397);
+			this->panel2->Size = System::Drawing::Size(478, 397);
 			this->panel2->TabIndex = 2;
 			// 
 			// lB_output
@@ -208,8 +263,16 @@ namespace app {
 			this->lB_output->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"1. Собаки", L"2. Кошки" });
 			this->lB_output->Location = System::Drawing::Point(0, 0);
 			this->lB_output->Name = L"lB_output";
-			this->lB_output->Size = System::Drawing::Size(241, 397);
+			this->lB_output->Size = System::Drawing::Size(478, 397);
 			this->lB_output->TabIndex = 4;
+			// 
+			// p_output
+			// 
+			this->p_output->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->p_output->Location = System::Drawing::Point(478, 122);
+			this->p_output->Name = L"p_output";
+			this->p_output->Size = System::Drawing::Size(1111, 397);
+			this->p_output->TabIndex = 3;
 			// 
 			// MyForm
 			// 
@@ -218,6 +281,7 @@ namespace app {
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
 			this->ClientSize = System::Drawing::Size(1589, 519);
+			this->Controls->Add(this->p_output);
 			this->Controls->Add(this->panel2);
 			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->menu);
@@ -226,6 +290,7 @@ namespace app {
 			this->Name = L"MyForm";
 			this->Text = L"Практика";
 			this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
+			this->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::MyForm_Paint);
 			this->menu->ResumeLayout(false);
 			this->menu->PerformLayout();
 			this->panel1->ResumeLayout(false);
@@ -250,7 +315,9 @@ namespace app {
 		// Очистка интерфейса
 		public:  void ClearToNewTask() {
 			tB_title->Text = "Выбирете пункт меню для решения задачи.";
+			tB_title->Enabled = false;
 			lB_output->Items->Clear();
+			p_output->Visible = true;
 		}
 
 		// Маска
@@ -258,7 +325,9 @@ namespace app {
 			ClearToNewTask();
 
 			tB_title->Text = " Задание:\r\n Вывести из массива, состоящего из 20 элементов, числа удовлетворяющие маске.";
+
 			InputData^ f_input = gcnew InputData;
+			f_input->SetLable("Введите маску:");
 			if (f_input->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
 				String^ sRes = f_input->GetText();
 				if (sRes == "") {
@@ -302,7 +371,7 @@ namespace app {
 				String^ stext = ipd->GetText();
 				tB_title->AppendText("\r\n Введенная строка: \'");
 				tB_title->AppendText(stext + "\'");
-				ipd->Visible = false;
+				//ipd->Visible = false;
 
 				std::string ss;
 				StringToChar(stext, ss);
@@ -318,5 +387,42 @@ namespace app {
 			}
 			ipd->Close();
 		}
-};
+
+		// Лаба 2.1 Нахождение индекса максимального T
+		private: System::Void лабораторнаяРабота21ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+			ClearToNewTask();
+			tB_title->Text = " Задание: Найти индекс максимального T\r\n Даны переменные P, S, R. Определить: Q, T1, T2 и индекс максимального T.";
+
+			InputData^ iL1 = gcnew InputData;
+			iL1->SetLable("Введите переменные P, S, R через пробел");
+
+			if (iL1->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+
+			}
+			iL1->Close();
+		}
+
+		// Рекурсия и график
+		public: void Recursion();
+		private: System::Void рекурсияИГрафикToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+			ClearToNewTask();
+			Recursion();
+			onAction = act_RECURSION;
+			Refresh();
+		}
+		// Отрисовка
+		private: System::Void MyForm_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+			switch (onAction) {
+				case act_RECURSION: {
+					RECT rct(500, 200, 1400, 600);
+					p_output->Visible = false;
+					drawGraph(e->Graphics, RecOut, 11, rct);
+					break;
+				}
+				default: {
+
+				}
+			}
+		}
+	};
 }

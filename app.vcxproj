@@ -121,6 +121,7 @@
     <ClCompile Include="InputData.cpp" />
     <ClCompile Include="MyClasses.cpp" />
     <ClCompile Include="MyForm.cpp" />
+    <ClCompile Include="Recursion.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="InputData.h">
@@ -130,6 +131,8 @@
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="MyHeader.h" />
+    <ClInclude Include="Recursion.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="InputData.resx">

@@ -1,3 +1,5 @@
-﻿  MyClasses.cpp
+﻿  Recursion.cpp
+D:\projects\app\Recursion.cpp(38,30): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+D:\projects\app\Recursion.cpp(44,20): warning C4244: =: преобразование "double" в "float", возможна потеря данных
   InputData.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
   app.vcxproj -> D:\projects\app\Debug\app.exe
