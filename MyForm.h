@@ -312,7 +312,7 @@ namespace app {
 
 		// Очистка при загрузке
 		private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
-			ClearToNewTask();
+			//ClearToNewTask();
 		}
 
 		// Очистка интерфейса
@@ -321,6 +321,7 @@ namespace app {
 			tB_title->Enabled = false;
 			lB_output->Items->Clear();
 			p_output->Visible = false;
+			onAction = act_NONE;
 		}
 
 		// Маска
@@ -352,7 +353,6 @@ namespace app {
 				f_input->Close();
 				return;
 			}
-
 		}
 
 		// Сведения о программисте
@@ -409,8 +409,8 @@ namespace app {
 		public: void Recursion();
 		private: System::Void рекурсияИГрафикToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 			ClearToNewTask();
-			onAction = act_RECURSION;
 			Recursion();
+			onAction = act_RECURSION;
 			Refresh();
 		}
 		// Отрисовка
@@ -421,7 +421,7 @@ namespace app {
 				}
 				break;
 				case act_RECURSION: {
-					RECT rct = {500, 200, 1200, 600};
+					RECT rct = {500, 200, 1500, 600};
 					//p_output->Visible = false;
 					drawGraph(e->Graphics, RecOut, 11, rct);
 					break;

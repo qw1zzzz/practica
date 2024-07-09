@@ -88,12 +88,12 @@ void drawGraph(Graphics^ pGraph, pStRecursion pRec, int pSizeRec, RECT pstRect) 
     // Отрисовка места размещения графика
 
     Pen^ WhitePen = gcnew Pen(Color::White, 2);
-    pGraph->DrawRectangle(WhitePen, pstRect.left, pstRect.top, pstRect.right - pstRect.left, pstRect.bottom - pstRect.top);
+    pGraph->DrawRectangle(WhitePen, pstRect.left + 75, pstRect.top, pstRect.right - 525, pstRect.bottom - 90);
     
     Font^ font = gcnew Font("New Time Roman", 16);
-    SolidBrush^ brush = gcnew SolidBrush(Color::YellowGreen);
+    SolidBrush^ brush = gcnew SolidBrush(Color::WhiteSmoke);
     String^ sHeading = "График рекурентного соотношения";
-    int nHeadSize = sHeading->Length, nInd = 50;
+    int nHeadSize = sHeading->Length, nInd = 150;
     int zInd = ((pstRect.right - pstRect.left) - font->Size * sHeading->Length) / 2 + nInd;
     
     pGraph->DrawString(sHeading, font, brush, pstRect.left + zInd, pstRect.top);
@@ -106,36 +106,119 @@ void drawGraph(Graphics^ pGraph, pStRecursion pRec, int pSizeRec, RECT pstRect) 
     drawAxisX(pGraph, rAxisX, nMinAxisX, nMaxAxisX, pSizeRec);  // Отрисовать ось X
     drawAxisY(pGraph, rAxisX, nMinAxisY, nMaxAxisY, 5);         // Отрсовать ось Y
 
+    float nPxRepVal = (rAxisX.right - rAxisX.left);             // Кол-во пикселей по горизонтали
+    
+    int nY = (int)(rAxisX.bottom - (pRec[0].nVal - nMinAxisY) * (rAxisX.bottom - rAxisX.top) / (nMaxAxisY - nMinAxisY));
+    int nSY = (int)(rAxisX.bottom - (pRec[0].nSum - nMinAxisY) * (rAxisX.bottom - rAxisX.top) / (nMaxAxisY - nMinAxisY));
+    int nPxOld = rAxisX.left;
+
+    WhitePen->Width = 4;
+    for (int i = 0; i < pSizeRec; i++) {
+        float nPxStep = rAxisX.left + (i)*nPxRepVal / (pSizeRec - 1);
+        int nY2 = (int)(rAxisX.bottom - (pRec[i].nVal - nMinAxisY) * (rAxisX.bottom - rAxisX.top) / (nMaxAxisY - nMinAxisY));
+
+        WhitePen->Color = Color::Red;
+        pGraph->DrawLine(WhitePen, (int)nPxOld, nY, (int)nPxStep, nY2);
+        nY = nY2;
+
+        int nSY2 = (int)(rAxisX.bottom - (pRec[i].nSum - nMinAxisY) * (rAxisX.bottom - rAxisX.top) / (nMaxAxisY - nMinAxisY));
+        WhitePen->Color = Color::Blue;
+        pGraph->DrawLine(WhitePen, (int)nPxOld, nSY, (int)nPxStep, nSY2);
+        nSY = nSY2;
+
+        nPxOld = nPxStep;
+    }
+}
+
+// Поворот текста на оси Y
+void DrawTextRotate(Graphics^ pGraph, String^ pText, System::Drawing::Rectangle pRect, Font^ pFont, Brush^ pBrush, float angle) {
+    System::Drawing::Rectangle rect(0, 0, pRect.Height, pRect.Width);
+    pGraph->ResetTransform();
+    pGraph->RotateTransform(angle);
+
+    pGraph->TranslateTransform(pRect.Left, pRect.Bottom, System::Drawing::Drawing2D::MatrixOrder::Append);
+    StringFormat^ string_format = gcnew StringFormat();
+    string_format->Alignment = StringAlignment::Center;
+    string_format->LineAlignment = StringAlignment::Center;
+    /*Pen^ pen = gcnew Pen(Color::White, 2);
+    pGraph->DrawRectangle(pen, pRect);*/
+    pGraph->DrawString(pText, pFont, pBrush, rect, string_format);
+    pGraph->ResetTransform();
 }
 
 // Отрисовка оси X
 void drawAxisX(Graphics^ pGraph, RECT pArea, float pMin, float pMax, int pSec) {
-    PointF p1;
-    PointF p2;
-    p1.X = pArea.right;
+    PointF p1, p2;
+    p1.X = pArea.left;
     p1.Y = pArea.bottom;
 
     p2.X = pArea.right;
     p2.Y = pArea.bottom;
 
-    Pen^ pen = gcnew Pen(Color::White, 2);
+    Pen^ pen = gcnew Pen(Color::LightGray, 3);
     pGraph->DrawLine(pen, p1, p2);
 
     // Шрифт на оси X
     Font^ font = gcnew Font("New Time Roman", 12);
     SolidBrush^ brush = gcnew SolidBrush(Color::White);
-    String^ sAxis = gcnew String("Идентификатор значений");
-    int indAxis = ((pArea.right - pArea.left) - sAxis->Length) / 2;
-    pGraph->DrawString(sAxis, font, brush, pArea.left + indAxis, pArea.bottom + 10);
+    String^ sAxis = gcnew String("Аргумент функции");
+    int indAxis = ((pArea.right - pArea.left) - sAxis->Length) / 2 - 60 ;
+    pGraph->DrawString(sAxis, font, brush, pArea.left + indAxis, pArea.bottom + 20);
 
     float nPxPerVal = (pArea.right - pArea.left) / (pMax - pMin);
 
     pen->Width = 1;
     pen->DashStyle = System::Drawing::Drawing2D::DashStyle::Dot;
-    pen->Color = Color::Yellow;
-
+    pen->Color = Color::LightYellow;
+    for (int i = 0; i < pSec; i++) {
+        float nPxStep = pArea.left + (i)*nPxPerVal * (pMax - pMin) / (pSec - 1);
+        pGraph->DrawLine(pen, nPxStep, (float)pArea.bottom + 2, nPxStep, (float)pArea.top);
+        brush->Color = Color::White;
+        pGraph->DrawString(Convert::ToString(pMin + i), font, brush, nPxStep - font->Size / 2, pArea.bottom + 4);
+    }
 }
 
 void drawAxisY(Graphics^ pGraph, RECT pArea, float pMin, float pMax, int pSec) {
+    PointF p1, p2;
+    p1.X = pArea.left;
+    p1.Y = pArea.bottom;
 
+    p2.X = pArea.left;
+    p2.Y = pArea.top;
+
+    Pen^ pen = gcnew Pen(Color::LightGray, 3);
+    pGraph->DrawLine(pen, p1, p2);
+
+    float nOlt = (pMax - pMin) / pSec;
+    float nPxPerVal = (pArea.bottom - pArea.top) / (pMax - pMin);
+
+    Font^ font = gcnew Font("New Time Roman", 12);
+    SolidBrush^ brush = gcnew SolidBrush(Color::WhiteSmoke);
+
+    String^ label = gcnew String("Значение");
+    int indexis = ((pArea.bottom - pArea.top) - label->Length) / 2;
+
+    System::Drawing::Rectangle rect(int(pArea.left - font->Height), pArea.top, int(font->Height), int(pArea.bottom - pArea.top));
+
+    DrawTextRotate(pGraph, label, rect, font, brush, -90);
+
+    String^ sItem = gcnew String("");
+    System::Globalization::NumberFormatInfo^ ifp = gcnew System::Globalization::NumberFormatInfo;
+    System::Globalization::CultureInfo^ ifc = gcnew System::Globalization::CultureInfo("ru-RU");
+    ifp->NumberDecimalDigits = 4;
+    ifc->NumberFormat->NumberDecimalDigits = 4;
+
+    for (int i = 0; i < pSec + 1; i++) {
+        float nPxStep = pArea.bottom - (i)*nPxPerVal * (pMax - pMin) / pSec;
+        if (i > 0) {
+            pen->Width = 1;
+            pen->DashStyle = System::Drawing::Drawing2D::DashStyle::Dot;
+            pen->Color = Color::White;
+
+            pGraph->DrawLine(pen, pArea.left - 3, int(nPxStep), pArea.right, int(nPxStep));
+        }
+        float val = (pMin + (i * nOlt));
+        brush->Color = Color::White;
+        pGraph->DrawString(val.ToString("n", ifp), font, brush, pArea.left - 100, int(nPxStep));
+    }
 }

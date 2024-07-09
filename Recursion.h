@@ -21,4 +21,4 @@ static CURSORINFO pci;
 void drawAxisX(Graphics^ pGraph, RECT pArea, float pMin, float pMax, int pSec);
 void drawAxisY(Graphics^ pGraph, RECT pArea, float pMin, float pMax, int pSec);
 void drawGraph(Graphics^ pGraph, pStRecursion pRec, int pSizeRec, RECT pstRect);
-//void DrawTextRotate(Graphics^ pGraph, String^ pText, System::Drawing::Rectangle pRect, font^ pFont, brush^ pBrush, float angle);
+void DrawTextRotate(Graphics^ pGraph, String^ pText, System::Drawing::Rectangle pRect, Font^ pFont, Brush^ pBrush, float angle);
