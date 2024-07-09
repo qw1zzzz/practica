@@ -1,5 +1,22 @@
 ﻿  Recursion.cpp
 D:\projects\app\Recursion.cpp(38,30): warning C4244: =: преобразование "double" в "float", возможна потеря данных
 D:\projects\app\Recursion.cpp(44,20): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+D:\projects\app\Recursion.cpp(68,37): warning C4554: "|": проверьте приоритет операторов на ошибки; для уточнения приоритета используйте скобки
+D:\projects\app\Recursion.cpp(73,36): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+D:\projects\app\Recursion.cpp(74,24): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+D:\projects\app\Recursion.cpp(75,35): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+D:\projects\app\Recursion.cpp(78,32): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+D:\projects\app\Recursion.cpp(80,32): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+D:\projects\app\Recursion.cpp(83,32): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+D:\projects\app\Recursion.cpp(85,32): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+D:\projects\app\Recursion.cpp(97,14): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+D:\projects\app\Recursion.cpp(99,75): warning C4244: аргумент: преобразование "LONG" в "float", возможна потеря данных
+D:\projects\app\Recursion.cpp(99,60): warning C4244: аргумент: преобразование "LONG" в "float", возможна потеря данных
+D:\projects\app\Recursion.cpp(115,17): warning C4244: аргумент: преобразование "LONG" в "float", возможна потеря данных
+D:\projects\app\Recursion.cpp(116,17): warning C4244: аргумент: преобразование "LONG" в "float", возможна потеря данных
+D:\projects\app\Recursion.cpp(118,17): warning C4244: аргумент: преобразование "LONG" в "float", возможна потеря данных
+D:\projects\app\Recursion.cpp(119,17): warning C4244: аргумент: преобразование "LONG" в "float", возможна потеря данных
+D:\projects\app\Recursion.cpp(129,79): warning C4244: аргумент: преобразование "LONG" в "float", возможна потеря данных
+D:\projects\app\Recursion.cpp(129,55): warning C4244: аргумент: преобразование "LONG" в "float", возможна потеря данных
   InputData.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
   app.vcxproj -> D:\projects\app\Debug\app.exe

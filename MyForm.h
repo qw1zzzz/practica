@@ -1,5 +1,6 @@
 #pragma once
 #include <Windows.h>
+#include <windef.h>
 #include <string>
 #include "InputData.h"
 #include "MyClasses.h"
@@ -269,10 +270,12 @@ namespace app {
 			// p_output
 			// 
 			this->p_output->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->p_output->Enabled = false;
 			this->p_output->Location = System::Drawing::Point(478, 122);
 			this->p_output->Name = L"p_output";
 			this->p_output->Size = System::Drawing::Size(1111, 397);
 			this->p_output->TabIndex = 3;
+			this->p_output->Visible = false;
 			// 
 			// MyForm
 			// 
@@ -288,8 +291,8 @@ namespace app {
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->MainMenuStrip = this->menu;
 			this->Name = L"MyForm";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Практика";
-			this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
 			this->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::MyForm_Paint);
 			this->menu->ResumeLayout(false);
 			this->menu->PerformLayout();
@@ -317,7 +320,7 @@ namespace app {
 			tB_title->Text = "Выбирете пункт меню для решения задачи.";
 			tB_title->Enabled = false;
 			lB_output->Items->Clear();
-			p_output->Visible = true;
+			p_output->Visible = false;
 		}
 
 		// Маска
@@ -406,16 +409,20 @@ namespace app {
 		public: void Recursion();
 		private: System::Void рекурсияИГрафикToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 			ClearToNewTask();
-			Recursion();
 			onAction = act_RECURSION;
+			Recursion();
 			Refresh();
 		}
 		// Отрисовка
 		private: System::Void MyForm_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 			switch (onAction) {
+				case act_LABIRINT: {
+					// labirint(0, e->Graphics);
+				}
+				break;
 				case act_RECURSION: {
-					RECT rct(500, 200, 1400, 600);
-					p_output->Visible = false;
+					RECT rct = {500, 200, 1200, 600};
+					//p_output->Visible = false;
 					drawGraph(e->Graphics, RecOut, 11, rct);
 					break;
 				}
