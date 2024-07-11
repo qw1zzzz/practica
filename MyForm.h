@@ -6,6 +6,7 @@
 #include "MyClasses.h"
 #include "MyHeader.h"
 #include "Recursion.h"
+#include "Labirint.h"
 
 
 
@@ -25,7 +26,14 @@ namespace app {
 	{
 	public:
 		static stRecursion* RecOut;
-		MyAction onAction;
+	private: System::Windows::Forms::ToolStripMenuItem^ ëàáèðèíòToolStripMenuItem1;
+	public:
+
+	public:
+
+	public:
+
+		   MyAction onAction;
 
 		MyForm(void)
 		{
@@ -102,6 +110,7 @@ namespace app {
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
 			this->lB_output = (gcnew System::Windows::Forms::ListBox());
 			this->p_output = (gcnew System::Windows::Forms::Panel());
+			this->ëàáèðèíòToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menu->SuspendLayout();
 			this->panel1->SuspendLayout();
 			this->panel2->SuspendLayout();
@@ -181,6 +190,7 @@ namespace app {
 			// 
 			// ëàáèðèíòToolStripMenuItem
 			// 
+			this->ëàáèðèíòToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->ëàáèðèíòToolStripMenuItem1 });
 			this->ëàáèðèíòToolStripMenuItem->Name = L"ëàáèðèíòToolStripMenuItem";
 			this->ëàáèðèíòToolStripMenuItem->Size = System::Drawing::Size(101, 25);
 			this->ëàáèðèíòToolStripMenuItem->Text = L"Ëàáèðèíò";
@@ -266,6 +276,7 @@ namespace app {
 			this->lB_output->Name = L"lB_output";
 			this->lB_output->Size = System::Drawing::Size(478, 397);
 			this->lB_output->TabIndex = 4;
+			this->lB_output->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &MyForm::lB_output_KeyDown);
 			// 
 			// p_output
 			// 
@@ -276,6 +287,13 @@ namespace app {
 			this->p_output->Size = System::Drawing::Size(1111, 397);
 			this->p_output->TabIndex = 3;
 			this->p_output->Visible = false;
+			// 
+			// ëàáèðèíòToolStripMenuItem1
+			// 
+			this->ëàáèðèíòToolStripMenuItem1->Name = L"ëàáèðèíòToolStripMenuItem1";
+			this->ëàáèðèíòToolStripMenuItem1->Size = System::Drawing::Size(180, 26);
+			this->ëàáèðèíòToolStripMenuItem1->Text = L"Ëàáèðèíò";
+			this->ëàáèðèíòToolStripMenuItem1->Click += gcnew System::EventHandler(this, &MyForm::ëàáèðèíòToolStripMenuItem1_Click);
 			// 
 			// MyForm
 			// 
@@ -293,7 +311,10 @@ namespace app {
 			this->Name = L"MyForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Ïðàêòèêà";
+			this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
 			this->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::MyForm_Paint);
+			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &MyForm::MyForm_KeyDown);
+			this->MouseDoubleClick += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm::MyForm_MouseDoubleClick);
 			this->menu->ResumeLayout(false);
 			this->menu->PerformLayout();
 			this->panel1->ResumeLayout(false);
@@ -417,19 +438,90 @@ namespace app {
 		private: System::Void MyForm_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 			switch (onAction) {
 				case act_LABIRINT: {
-					// labirint(0, e->Graphics);
-				}
-				break;
+					panel2->Visible = false;
+					onAction = LabirintDraw(e->Graphics);
+					if (onAction == act_LABIRINTEXIT) Refresh();
+				} break;
+				case act_LABIRINTEXIT: {
+					panel2->Visible = true;
+					lB_output->Items->Clear();
+					lB_output->Items->Add("Æóê äîñòèã âûõîäà èç ëàáèðèíòà! ÓÐÀ!");
+					LabirintDraw(e->Graphics);
+					
+				} break;
+				case act_LABIRINTPATH: {
+					LabirintDraw(e->Graphics);
+					StartMoving(e->Graphics);
+					onAction = act_LABIRINT;
+				} break;
+				case act_BREAK: {
+					panel2->Visible = true;
+					lB_output->Items->Clear();
+					lB_output->Items->Add("Îïåðàöèÿ ïðåðâàíà îïåðàòîðîì!");
+					onAction = act_NONE;
+				} break;
 				case act_RECURSION: {
-					RECT rct = {500, 200, 1500, 600};
+					RECT rct = { 500, 200, 1500, 600 };
 					//p_output->Visible = false;
 					drawGraph(e->Graphics, RecOut, 11, rct);
-					break;
-				}
+				} break;
 				default: {
 
 				}
 			}
+		}
+		// Î÷èñòêà èíòåðôåéñà ïî äàáë êëèêó
+		private: System::Void MyForm_MouseDoubleClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+			onAction = act_NONE;
+			lB_output->Items->Clear();
+			Refresh();
+		}
+
+		// Î÷èñòêà ïî êíîïêå
+		private: System::Void MyForm_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+			switch (e->KeyData) {
+				case System::Windows::Forms::Keys::F5:
+					onAction = act_NONE;
+					lB_output->Items->Clear();
+					Refresh();
+					break;
+			}
+
+			if (onAction = act_LABIRINT) {
+				switch (e->KeyValue) {
+					case 27: {
+						onAction = act_BREAK;
+						Refresh();
+						break;
+					}
+					case 115: {
+						onAction = act_LABIRINTPATH;
+						Refresh();
+						
+						break;
+					}
+					case 37: case 38: case 39: case 40: {
+
+						LabirintKeys(e->KeyValue);
+						Refresh();
+						break;
+					}
+					default:;
+				};
+			}
+		}
+		// Î÷èñòêà ïî êíîïêå
+		private: System::Void lB_output_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+			MyForm_KeyDown(this, e);
+		}
+		private: System::Void ëàáèðèíòToolStripMenuItem1_Click(System::Object^ sender, System::EventArgs^ e) {
+			panel2->Visible = false;
+			tB_title->Text = "Çàäà÷à Ëàáèðèíò \r\nÄëÿ óïðàâëåíèÿ èñïîëüçóéòå ñòðåëêè";
+			onAction = act_LABIRINT;
+			this->Focus();
+			Refresh();
+			/*Labirint(0);
+			panel2->Visible = true;*/
 		}
 	};
 }

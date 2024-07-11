@@ -1,0 +1,35 @@
+﻿  MyForm.cpp
+  Recursion.cpp
+D:\projects\ppractica\Recursion.cpp(38,30): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(44,20): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(68,37): warning C4554: "|": проверьте приоритет операторов на ошибки; для уточнения приоритета используйте скобки
+D:\projects\ppractica\Recursion.cpp(73,36): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(74,24): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(75,35): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(78,32): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(80,32): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(83,32): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(85,32): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(97,14): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(99,75): warning C4244: аргумент: преобразование "LONG" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(99,60): warning C4244: аргумент: преобразование "LONG" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(109,21): warning C4244: инициализация: преобразование "LONG" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(129,18): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(139,49): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(139,37): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(152,17): warning C4244: аргумент: преобразование "LONG" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(153,17): warning C4244: аргумент: преобразование "LONG" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(155,17): warning C4244: аргумент: преобразование "LONG" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(156,17): warning C4244: аргумент: преобразование "LONG" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(166,79): warning C4244: аргумент: преобразование "LONG" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(166,55): warning C4244: аргумент: преобразование "LONG" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(177,109): warning C4244: аргумент: преобразование "LONG" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(183,17): warning C4244: аргумент: преобразование "LONG" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(184,17): warning C4244: аргумент: преобразование "LONG" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(186,17): warning C4244: аргумент: преобразование "LONG" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(187,17): warning C4244: аргумент: преобразование "LONG" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(222,86): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(222,76): warning C4244: аргумент: преобразование "LONG" в "float", возможна потеря данных
+  Создание кода...
+  InputData.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
+  app.vcxproj -> D:\projects\ppractica\x64\Debug\app.exe
