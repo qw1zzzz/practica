@@ -47,5 +47,9 @@ D:\projects\ppractica\Recursion.cpp(187,17): warning C4244: аргумент: п
 D:\projects\ppractica\Recursion.cpp(222,86): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
 D:\projects\ppractica\Recursion.cpp(222,76): warning C4244: аргумент: преобразование "LONG" в "float", возможна потеря данных
   Создание кода...
+D:\projects\ppractica\MyForm.h(896): warning C4700: использована неинициализированная локальная переменная "x2"
+D:\projects\ppractica\MyForm.h(896): warning C4700: использована неинициализированная локальная переменная "y2"
+D:\projects\ppractica\MyForm.h(896): warning C4700: использована неинициализированная локальная переменная "x2"
+D:\projects\ppractica\MyForm.h(896): warning C4700: использована неинициализированная локальная переменная "y2"
   InputData.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
   app.vcxproj -> D:\projects\ppractica\x64\Debug\app.exe

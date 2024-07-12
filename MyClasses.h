@@ -273,7 +273,7 @@ public:
 			//delete GetFigure(0);
 
 		}
-		//if (oFigure != NULL) delete oFigure;
+		if (oFigure != NULL) delete oFigure;
 
 		if (oUnit != NULL) {
 			cUnit* obj = 0;
@@ -299,12 +299,12 @@ public:
 		return nUnit - 1;
 	}
 
-	/*void Clear() {
+	void Clear() {
 		oFigure = (cFigure**)realloc(oFigure, 0);
 		nCount = 0;
 		oUnit = (cUnit**)realloc(oUnit, 0);
 		nUnit = 0;
-	}*/
+	}
 
 	int InsertFigure(cFigure* pFigure, int pIndex) {
 		if (pFigure == NULL) return -1;
