@@ -1,4 +1,6 @@
 #include "MyClasses.h"
+#include <sstream>
+#include <stdexcept>
 
 using namespace System::Runtime::InteropServices;
 void StringToChar(System::String^ s, std::string& os) {
@@ -41,4 +43,11 @@ char* DecodeText(char* psText) {
 	psText[0] = (psText[0] >> 1) & 0x7f;
 	psText[0] |= sBit;
 	return psText;
+}
+
+int GetValueInt(std::string pText) {
+	if (pText.empty()) return 0;
+	int npos = pText.find("="),
+		nval = atoi(pText.substr(npos + 1).c_str());
+	return nval;
 }

@@ -1,6 +1,12 @@
 #include "MyForm.h"
 #include "Windows.h"
+#include "wingdi.h"
+#include "WinUser.h"
+
 using namespace app;
+using namespace System::Drawing;
+
+[STAThreadAttribute]
 
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	Application::EnableVisualStyles();

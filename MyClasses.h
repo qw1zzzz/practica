@@ -12,7 +12,7 @@ void StringToChar(System::String^ s, std::string& os);
 System::String^ CharToString(char* str);
 char* EncodeText(char* psText);
 char* DecodeText(char* psText);
-//int GetValueInt(std::string pText);
+int GetValueInt(std::string pText);
 //string GetName(std::string pText);
 
 class cID {
@@ -74,6 +74,11 @@ class cFigure : public cID {
 		int Height() { return nHei; }
 		void Height(int pHei) { nHei = pHei; }
 
+		int Left() { return nx; }
+		int Top() { return ny; }
+		int Right() { return nx + nWid; }
+		int Bottom() { return ny + nHei; }
+
 		int MiddleX() { return nx + nWid / 2; }
 		int MiddleY() { return ny + nHei / 2; }
 
@@ -82,27 +87,27 @@ class cFigure : public cID {
 		int PenColor() { return penColor; }
 		void PenColor(int pCol) { penColor = pCol; }
 
-		void Move(int px, int py, bool anime = false) {
-			if (anime) {
-				int dx = (px - nx),
-					dy = (py - ny);
-				for (int i = 1; i <= 30; i++) {
-					//Draw();
-					nx = nx + dx * i / 30;
-					ny = ny + dy * i / 30;
-					//SetWidth(nWid);
-					//SetHeight(nHei);
-					//Draw();
-					Sleep(100 / i);
-				}
-			}
-			else {
-				nx = px;
-				ny = py;
-				//SetWidth(nWid);
-				//SetHeight(nHei);
-			}
-		}
+		//void Move(int px, int py, bool anime = false) {
+		//	if (anime) {
+		//		int dx = (px - nx),
+		//			dy = (py - ny);
+		//		for (int i = 1; i <= 30; i++) {
+		//			//Draw(System::Drawing::Graphics^ graph);
+		//			nx = nx + dx * i / 30;
+		//			ny = ny + dy * i / 30;
+		//			//SetWidth(nWid);
+		//			//SetHeight(nHei);
+		//			//Draw();
+		//			Sleep(100 / i);
+		//		}
+		//	}
+		//	else {
+		//		nx = px;
+		//		ny = py;
+		//		//SetWidth(nWid);
+		//		//SetHeight(nHei);
+		//	}
+		//}
 
 		virtual void Save(string psFile) {
 			ofstream fOut(psFile, ios::app);
@@ -120,7 +125,7 @@ class cFigure : public cID {
 			}
 		}
 
-		/*virtual int Load(string sFile, int cursor) {
+		int Load(string sFile, int cursor) {
 			ifstream fIn(sFile);
 			fIn.seekg(cursor, ios::beg);
 			if (fIn) {
@@ -137,7 +142,7 @@ class cFigure : public cID {
 				return (int)fIn.tellg();
 			}
 			return 0;
-		}*/
+		}
 
 		void SetParam(string pText) {
 
@@ -253,10 +258,10 @@ class cUnit {
 
 		void Draw(System::Drawing::Graphics^ graph) {
 		//void Draw() {
-			/*Pen^ pen = gcnew Pen(Color::Black, 3);
+			Pen^ pen = gcnew Pen(Color::Black, 3);
 			graph->DrawLine(pen, fig1->MiddleX(), fig1->MiddleY(), fig2->MiddleX(), fig2->MiddleY());
 
-			if ((fig1 == 0) || (fig2 == 0)) return;*/
+			if ((fig1 == 0) || (fig2 == 0)) return;
 		}
 };
 //
@@ -345,7 +350,7 @@ public:
 		fOut.close();
 	}
 
-	/*void Load(string pFile) {
+	void Load(string pFile) {
 		if (pFile.empty()) return;
 		ifstream fIn;
 		int cur = 0;
@@ -396,9 +401,9 @@ public:
 			}
 		}
 		fIn.close();
-	}*/
+	}
 	
-	/*cFigure* GetFigure(int pX, int pY) {
+	cFigure* GetFigure(int pX, int pY) {
 		cFigure* fig = 0;
 		for (int i = 0; i < nCount; i++) {
 			fig = oFigure[i];
@@ -408,7 +413,7 @@ public:
 			fig = 0;
 		}
 		return fig;
-	}*/
+	}
 	cFigure* GetFigure(int pIndex) {
 		if ((pIndex < 0) || (pIndex >= nCount)) return NULL;
 		return oFigure[pIndex];
