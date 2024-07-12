@@ -27,6 +27,12 @@ Class app.MyForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   Fields:
     _Action onAction : Public
     _stRecursion* RecOut : Public, Static
+    cManager* mng : Public, Static
+    cFigure* ActiveClass : Public, Static
+    Int32 nx : Public, Static
+    Int32 ny : Public, Static
+    Int32 dx : Public, Static
+    Int32 dy : Public, Static
   Methods:
     ClearToNewTask(): PrivateScope, Public, HideBySig
     Recursion(): PrivateScope, Public, HideBySig

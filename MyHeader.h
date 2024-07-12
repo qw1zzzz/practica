@@ -6,5 +6,7 @@ typedef enum _Action {
 	act_LABIRINTEXIT,
 	act_LABIRINTPATH,
 	act_RECURSION,
-	act_BREAK
+	act_BREAK,
+	act_CLASSES,
+	act_UNIT
 } MyAction, *pMyAction;

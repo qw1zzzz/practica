@@ -1,5 +1,21 @@
 ﻿  MyForm.cpp
+D:\projects\ppractica\MyClasses.h(171,66): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\projects\ppractica\MyClasses.h(171,51): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\projects\ppractica\MyClasses.h(200,23): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+D:\projects\ppractica\MyClasses.h(200,17): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+D:\projects\ppractica\MyClasses.h(204,70): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\projects\ppractica\MyClasses.h(204,55): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\projects\ppractica\MyClasses.h(230,66): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\projects\ppractica\MyClasses.h(230,51): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
   Recursion.cpp
+D:\projects\ppractica\MyClasses.h(171,66): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\projects\ppractica\MyClasses.h(171,51): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\projects\ppractica\MyClasses.h(200,23): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+D:\projects\ppractica\MyClasses.h(200,17): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+D:\projects\ppractica\MyClasses.h(204,70): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\projects\ppractica\MyClasses.h(204,55): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\projects\ppractica\MyClasses.h(230,66): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\projects\ppractica\MyClasses.h(230,51): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
 D:\projects\ppractica\Recursion.cpp(38,30): warning C4244: =: преобразование "double" в "float", возможна потеря данных
 D:\projects\ppractica\Recursion.cpp(44,20): warning C4244: =: преобразование "double" в "float", возможна потеря данных
 D:\projects\ppractica\Recursion.cpp(68,37): warning C4554: "|": проверьте приоритет операторов на ошибки; для уточнения приоритета используйте скобки
