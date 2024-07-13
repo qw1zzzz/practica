@@ -1096,6 +1096,7 @@ namespace app {
 			int nSize = sizeof(words) / sizeof(words[0]);
 			unsigned char ch, ch2 = 0;
 			bool przn = false;
+			lB_output->Items->Add("Исходный массив: ");
 			for (int i = 0; i < nSize - 1; i++) {
 				lB_output->Items->Add((i + 1) + ". " + gcnew String(words[i].c_str()));
 			}
@@ -1108,9 +1109,6 @@ namespace app {
 				ch = Convert::ToChar(sRes);
 			}
 			inp->Close();
-
-			lB_output->Items->Clear();
-
 			for (int i = 0; i < nSize - 1; i++) {
 				sortedwords[i] = words[i];
 			}
@@ -1138,9 +1136,11 @@ namespace app {
 				} while (przn);
 				break;
 			}
-			
+
+			lB_output->Items->Add("--------------------------------------");
+			lB_output->Items->Add("Отсортированный массив: ");
 			for (int i = 0; i < nSize - 1; i++) {
-				lB_output->Items->Add((i + 1) + ". " + gcnew String(words[i].c_str()) + "\t\t" + (i + 1) + ". " + gcnew String(sortedwords[i].c_str()));
+				lB_output->Items->Add((i + 1) + ". " + gcnew String(sortedwords[i].c_str()));
 			}
 		}
 		private: System::Void выборомToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {

@@ -13,7 +13,7 @@ D:\projects\ppractica\MyForm.h(751,20): warning C4244: =: преобразова
 D:\projects\ppractica\MyForm.h(885,27): warning C4244: =: преобразование "double" в "float", возможна потеря данных
 D:\projects\ppractica\MyForm.h(928,9): warning C4244: =: преобразование "double" в "float", возможна потеря данных
 D:\projects\ppractica\MyForm.h(1030,34): warning C4244: =: преобразование "double" в "int", возможна потеря данных
-D:\projects\ppractica\MyForm.h(1108,25): warning C4244: =: преобразование "wchar_t" в "unsigned char", возможна потеря данных
+D:\projects\ppractica\MyForm.h(1109,25): warning C4244: =: преобразование "wchar_t" в "unsigned char", возможна потеря данных
 D:\projects\ppractica\MyForm.h(1422,25): warning C4101: clBlue: неиспользованная локальная переменная
 D:\projects\ppractica\MyForm.h(1422,9): warning C4101: clRed: неиспользованная локальная переменная
 D:\projects\ppractica\MyForm.h(1422,16): warning C4101: clGreen: неиспользованная локальная переменная
@@ -32,7 +32,7 @@ D:\projects\ppractica\MyForm.h(751,20): warning C4244: =: преобразова
 D:\projects\ppractica\MyForm.h(885,27): warning C4244: =: преобразование "double" в "float", возможна потеря данных
 D:\projects\ppractica\MyForm.h(928,9): warning C4244: =: преобразование "double" в "float", возможна потеря данных
 D:\projects\ppractica\MyForm.h(1030,34): warning C4244: =: преобразование "double" в "int", возможна потеря данных
-D:\projects\ppractica\MyForm.h(1108,25): warning C4244: =: преобразование "wchar_t" в "unsigned char", возможна потеря данных
+D:\projects\ppractica\MyForm.h(1109,25): warning C4244: =: преобразование "wchar_t" в "unsigned char", возможна потеря данных
 D:\projects\ppractica\MyForm.h(1422,25): warning C4101: clBlue: неиспользованная локальная переменная
 D:\projects\ppractica\MyForm.h(1422,9): warning C4101: clRed: неиспользованная локальная переменная
 D:\projects\ppractica\MyForm.h(1422,16): warning C4101: clGreen: неиспользованная локальная переменная
