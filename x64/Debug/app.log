@@ -1,4 +1,4 @@
-﻿  MyClasses.cpp
+﻿  MyForm.cpp
 D:\projects\ppractica\MyClasses.h(132,12): warning C4101: y: неиспользованная локальная переменная
 D:\projects\ppractica\MyClasses.h(132,9): warning C4101: x: неиспользованная локальная переменная
 D:\projects\ppractica\MyClasses.h(176,66): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
@@ -9,8 +9,63 @@ D:\projects\ppractica\MyClasses.h(209,70): warning C4244: аргумент: пр
 D:\projects\ppractica\MyClasses.h(209,55): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
 D:\projects\ppractica\MyClasses.h(235,66): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
 D:\projects\ppractica\MyClasses.h(235,51): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\projects\ppractica\MyClasses.cpp(13,61): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-D:\projects\ppractica\MyClasses.cpp(38,2): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-D:\projects\ppractica\MyClasses.cpp(50,28): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\projects\ppractica\MyForm.h(751,20): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+D:\projects\ppractica\MyForm.h(885,27): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+D:\projects\ppractica\MyForm.h(928,9): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+D:\projects\ppractica\MyForm.h(1030,34): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+D:\projects\ppractica\MyForm.h(1108,25): warning C4244: =: преобразование "wchar_t" в "unsigned char", возможна потеря данных
+D:\projects\ppractica\MyForm.h(1422,25): warning C4101: clBlue: неиспользованная локальная переменная
+D:\projects\ppractica\MyForm.h(1422,9): warning C4101: clRed: неиспользованная локальная переменная
+D:\projects\ppractica\MyForm.h(1422,16): warning C4101: clGreen: неиспользованная локальная переменная
+  Recursion.cpp
+D:\projects\ppractica\MyClasses.h(132,12): warning C4101: y: неиспользованная локальная переменная
+D:\projects\ppractica\MyClasses.h(132,9): warning C4101: x: неиспользованная локальная переменная
+D:\projects\ppractica\MyClasses.h(176,66): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\projects\ppractica\MyClasses.h(176,51): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\projects\ppractica\MyClasses.h(205,23): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+D:\projects\ppractica\MyClasses.h(205,17): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+D:\projects\ppractica\MyClasses.h(209,70): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\projects\ppractica\MyClasses.h(209,55): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\projects\ppractica\MyClasses.h(235,66): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\projects\ppractica\MyClasses.h(235,51): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\projects\ppractica\MyForm.h(751,20): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+D:\projects\ppractica\MyForm.h(885,27): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+D:\projects\ppractica\MyForm.h(928,9): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+D:\projects\ppractica\MyForm.h(1030,34): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+D:\projects\ppractica\MyForm.h(1108,25): warning C4244: =: преобразование "wchar_t" в "unsigned char", возможна потеря данных
+D:\projects\ppractica\MyForm.h(1422,25): warning C4101: clBlue: неиспользованная локальная переменная
+D:\projects\ppractica\MyForm.h(1422,9): warning C4101: clRed: неиспользованная локальная переменная
+D:\projects\ppractica\MyForm.h(1422,16): warning C4101: clGreen: неиспользованная локальная переменная
+D:\projects\ppractica\Recursion.cpp(18,26): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(19,26): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(21,30): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(22,32): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(41,30): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(47,20): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(71,37): warning C4554: "|": проверьте приоритет операторов на ошибки; для уточнения приоритета используйте скобки
+D:\projects\ppractica\Recursion.cpp(77,24): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(78,35): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(100,14): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(102,75): warning C4244: аргумент: преобразование "LONG" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(102,60): warning C4244: аргумент: преобразование "LONG" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(112,21): warning C4244: инициализация: преобразование "LONG" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(134,26): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(148,26): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(160,49): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(160,37): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(173,17): warning C4244: аргумент: преобразование "LONG" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(174,17): warning C4244: аргумент: преобразование "LONG" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(176,17): warning C4244: аргумент: преобразование "LONG" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(177,17): warning C4244: аргумент: преобразование "LONG" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(187,79): warning C4244: аргумент: преобразование "LONG" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(187,55): warning C4244: аргумент: преобразование "LONG" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(198,109): warning C4244: аргумент: преобразование "LONG" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(204,17): warning C4244: аргумент: преобразование "LONG" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(205,17): warning C4244: аргумент: преобразование "LONG" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(207,17): warning C4244: аргумент: преобразование "LONG" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(208,17): warning C4244: аргумент: преобразование "LONG" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(243,86): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\projects\ppractica\Recursion.cpp(243,76): warning C4244: аргумент: преобразование "LONG" в "float", возможна потеря данных
+  Создание кода...
   InputData.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
   app.vcxproj -> D:\projects\ppractica\x64\Debug\app.exe

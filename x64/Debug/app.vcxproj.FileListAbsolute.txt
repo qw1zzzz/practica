@@ -1,5 +1,5 @@
+D:\projects\ppractica\x64\Debug\app.vcxproj.AssemblyReference.cache
 D:\projects\ppractica\x64\Debug\app.InputData.resources
 D:\projects\ppractica\x64\Debug\app.MyForm.resources
 D:\projects\ppractica\x64\Debug\app.vcxproj.GenerateResource.cache
 D:\projects\ppractica\x64\Debug\app.exe
-D:\projects\ppractica\x64\Debug\app.vcxproj.AssemblyReference.cache

@@ -7,6 +7,7 @@
 #include "MyHeader.h"
 #include "Recursion.h"
 #include "Labirint.h"
+#include <iomanip>
 
 
 
@@ -58,6 +59,9 @@ namespace app {
 	private: System::Windows::Forms::ColorDialog^ colorDialog1;
 	private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 	private: System::Windows::Forms::SaveFileDialog^ saveFileDialog1;
+	private: System::Windows::Forms::ToolStripMenuItem^ пузырькомToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ выборомToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ быстраяToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ выключитьРежимToolStripMenuItem;
 	public:
 
@@ -169,6 +173,9 @@ namespace app {
 			this->colorDialog1 = (gcnew System::Windows::Forms::ColorDialog());
 			this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->saveFileDialog1 = (gcnew System::Windows::Forms::SaveFileDialog());
+			this->пузырькомToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->выборомToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->быстраяToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menu->SuspendLayout();
 			this->panel1->SuspendLayout();
 			this->panel2->SuspendLayout();
@@ -228,24 +235,28 @@ namespace app {
 			this->лабораторнаяРабота22ToolStripMenuItem->Name = L"лабораторнаяРабота22ToolStripMenuItem";
 			this->лабораторнаяРабота22ToolStripMenuItem->Size = System::Drawing::Size(301, 26);
 			this->лабораторнаяРабота22ToolStripMenuItem->Text = L"Лабораторная работа №2.2";
+			this->лабораторнаяРабота22ToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::лабораторнаяРабота22ToolStripMenuItem_Click);
 			// 
 			// лабораторнаяРабота21ToolStripMenuItem1
 			// 
 			this->лабораторнаяРабота21ToolStripMenuItem1->Name = L"лабораторнаяРабота21ToolStripMenuItem1";
 			this->лабораторнаяРабота21ToolStripMenuItem1->Size = System::Drawing::Size(301, 26);
 			this->лабораторнаяРабота21ToolStripMenuItem1->Text = L"Лабораторная работа №3.1";
+			this->лабораторнаяРабота21ToolStripMenuItem1->Click += gcnew System::EventHandler(this, &MyForm::лабораторнаяРабота21ToolStripMenuItem1_Click);
 			// 
 			// лабораторнаяРабота32ToolStripMenuItem
 			// 
 			this->лабораторнаяРабота32ToolStripMenuItem->Name = L"лабораторнаяРабота32ToolStripMenuItem";
 			this->лабораторнаяРабота32ToolStripMenuItem->Size = System::Drawing::Size(301, 26);
 			this->лабораторнаяРабота32ToolStripMenuItem->Text = L"Лабораторная работа №3.2";
+			this->лабораторнаяРабота32ToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::лабораторнаяРабота32ToolStripMenuItem_Click);
 			// 
 			// лабораторнаяРабота4ToolStripMenuItem
 			// 
 			this->лабораторнаяРабота4ToolStripMenuItem->Name = L"лабораторнаяРабота4ToolStripMenuItem";
 			this->лабораторнаяРабота4ToolStripMenuItem->Size = System::Drawing::Size(301, 26);
 			this->лабораторнаяРабота4ToolStripMenuItem->Text = L"Лабораторная работа №4";
+			this->лабораторнаяРабота4ToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::лабораторнаяРабота4ToolStripMenuItem_Click);
 			// 
 			// лабиринтToolStripMenuItem
 			// 
@@ -270,6 +281,10 @@ namespace app {
 			// 
 			// сортировкаToolStripMenuItem
 			// 
+			this->сортировкаToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
+				this->пузырькомToolStripMenuItem,
+					this->выборомToolStripMenuItem, this->быстраяToolStripMenuItem
+			});
 			this->сортировкаToolStripMenuItem->Name = L"сортировкаToolStripMenuItem";
 			this->сортировкаToolStripMenuItem->Size = System::Drawing::Size(116, 25);
 			this->сортировкаToolStripMenuItem->Text = L"Сортировка";
@@ -414,10 +429,10 @@ namespace app {
 			// 
 			this->lB_output->BackColor = System::Drawing::Color::Silver;
 			this->lB_output->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->lB_output->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+			this->lB_output->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->lB_output->FormattingEnabled = true;
-			this->lB_output->ItemHeight = 18;
+			this->lB_output->ItemHeight = 20;
 			this->lB_output->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"1. Собаки", L"2. Кошки" });
 			this->lB_output->Location = System::Drawing::Point(0, 0);
 			this->lB_output->Name = L"lB_output";
@@ -549,6 +564,27 @@ namespace app {
 			// 
 			this->openFileDialog1->FileName = L"openFileDialog1";
 			// 
+			// пузырькомToolStripMenuItem
+			// 
+			this->пузырькомToolStripMenuItem->Name = L"пузырькомToolStripMenuItem";
+			this->пузырькомToolStripMenuItem->Size = System::Drawing::Size(180, 26);
+			this->пузырькомToolStripMenuItem->Text = L"Пузырьком";
+			this->пузырькомToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::пузырькомToolStripMenuItem_Click);
+			// 
+			// выборомToolStripMenuItem
+			// 
+			this->выборомToolStripMenuItem->Name = L"выборомToolStripMenuItem";
+			this->выборомToolStripMenuItem->Size = System::Drawing::Size(180, 26);
+			this->выборомToolStripMenuItem->Text = L"Выбором";
+			this->выборомToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::выборомToolStripMenuItem_Click);
+			// 
+			// быстраяToolStripMenuItem
+			// 
+			this->быстраяToolStripMenuItem->Name = L"быстраяToolStripMenuItem";
+			this->быстраяToolStripMenuItem->Size = System::Drawing::Size(180, 26);
+			this->быстраяToolStripMenuItem->Text = L"Быстрая";
+			this->быстраяToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::быстраяToolStripMenuItem_Click);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -565,6 +601,7 @@ namespace app {
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Практика";
 			this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
+			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::MyForm_Paint);
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &MyForm::MyForm_KeyDown);
 			this->MouseDoubleClick += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm::MyForm_MouseDoubleClick);
@@ -590,22 +627,22 @@ namespace app {
 
 		// Очистка при загрузке
 		private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
-			//ClearToNewTask();
+			ClearToNewTask();
 		}
 
 		// Очистка интерфейса
 		public:  void ClearToNewTask() {
-			tB_title->Text = "Выбирете пункт меню для решения задачи.";
+			tB_title->Text = "Выбирите пункт меню.";
 			tB_title->Enabled = false;
 			lB_output->Items->Clear();
-			p_output->Visible = false;
+			panel2->Visible = false;
 			onAction = act_NONE;
 		}
 
 		// Маска
 		private: System::Void маскаToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 			ClearToNewTask();
-
+			panel2->Visible = true;
 			tB_title->Text = " Задание:\r\n Вывести из массива, состоящего из 20 элементов, числа удовлетворяющие маске.";
 
 			InputData^ f_input = gcnew InputData;
@@ -639,7 +676,6 @@ namespace app {
 			tB_title->Text = " Программы выполнил cтудент 1 курса группы 1бИТС3: Ларин Артём Александрович.";
 		}
 
-		
 		// Шифрование
 		private: System::Void шифрованиеToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 			ClearToNewTask();
@@ -672,12 +708,12 @@ namespace app {
 		// Лаба 2.1 Нахождение индекса максимального T
 		private: System::Void лабораторнаяРабота21ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 			ClearToNewTask();
+			panel2->Visible = true;
 			InputData^ iL1P = gcnew InputData;
 			InputData^ iL1S = gcnew InputData;
 			InputData^ iL1R = gcnew InputData;
-			int p, s, r;
-			tB_title->Text = " Задание: Найти индекс максимального T\r\n Даны переменные P, S, R. Определить: Q, T1, T2 и индекс максимального T.";
-
+			int p, s, r, q, t1, t2, iT;
+			tB_title->Text = " Лабораторная работа 2.1 Найти индекс наибольшего T\r\n Даны переменные P, S, R. Определить: Q, T1, T2 и индекс максимального T.";
 			
 			iL1P->SetLable("Введите переменную P");
 
@@ -709,14 +745,421 @@ namespace app {
 			}
 			iL1R->Close();
 
+			lB_output->Items->Add("P = " + p + "\tS = " + s + "\tR = " + r);
+			lB_output->Items->Add("--------------------------------------");
+			if (!(p == 0 && s == 0 && r == 0)) {
+				q = abs(s - r) - pow(p, 2);
+				lB_output->Items->Add("Q = " + q);
+				t1 = p + s + r;
+				lB_output->Items->Add("T1 = " + t1);
+				if (q <= 0) {
+					if (q == 0) {
+						t2 = 0;
+					}
+					else {
+						t2 = 1 - q;
+					}
+				}
+				else t2 = abs(q);
+				lB_output->Items->Add("T2 = " + t2);
+				if (t1 > t2) {
+					iT = 1;
+				}
+				else iT = 2;
+				lB_output->Items->Add("--------------------------------------");
+				lB_output->Items->Add("Индекс наибольшего: " + iT);
+			}
+			else { 
+				tB_title->Text = "Ошибка! Неверные данные!";
+				panel2->Visible = false;
+			};
+		}
+		
+		// Лаба 2.2 Проверка правильности треугольника
+		private: System::Void лабораторнаяРабота22ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+			ClearToNewTask();
+			panel2->Visible = true;
+			InputData^ iL1A = gcnew InputData;
+			InputData^ iL1B = gcnew InputData;
+			InputData^ iL1C = gcnew InputData;
+
+			int a, b, c;
+			std::string answer;
+
+			tB_title->Text = " Лабораторная работа 2.2 \r\n Определить является ли треугольник равнобедренным.";
+
+			iL1A->SetLable("Введите сторону A");
+			iL1B->SetLable("Введите сторону B");
+			iL1C->SetLable("Введите сторону C");
+
+			if (iL1A->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+				String^ sRes = iL1A->GetText();
+				if (sRes == "") return;
+
+				a = Convert::ToInt32(sRes);
+			}
+			iL1A->Close();
+
+			if (iL1B->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+				String^ sRes = iL1B->GetText();
+				if (sRes == "") return;
+
+				b = Convert::ToInt32(sRes);
+			}
+			iL1B->Close();
+
+			if (iL1C->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+				String^ sRes = iL1C->GetText();
+				if (sRes == "") return;
+
+				c = Convert::ToInt32(sRes);
+			}
+			iL1C->Close();
+
+			lB_output->Items->Add("A = " + a + "\tB = " + b + "\tC = " + c);
+			lB_output->Items->Add("--------------------------------------");
+			lB_output->Items->Add("Принято решение:");
+			if (a > 0 && b > 0 && c > 0) {
+				if ((a + b > c) && (a + c > b) && (b + c > a)) {
+					if ((a == b) && (b == c)) {
+						lB_output->Items->Add("Треугольник равносторонний с основанием A = " + a);
+					}
+					else if (a == b) {
+						lB_output->Items->Add("Треугольник равнобедренный с основанием С = " + c);
+					}
+					else if (b == c) {
+						lB_output->Items->Add("Треугольник равнобедренный с основанием A = " + a);
+					}
+					else if (a == c) {
+						lB_output->Items->Add("Треугольник равнобедренный с основанием B = " + b);
+					}
+					else lB_output->Items->Add("Треугольник общего вида");
+
+				}
+				else lB_output->Items->Add("Треугольник не существует.");
+			}
+			else lB_output->Items->Add("Некорректные данные.");
+		}
+
+		// Лаба 3.1 Нахождение точек графика и его отрисовка
+		private: System::Void лабораторнаяРабота21ToolStripMenuItem1_Click(System::Object^ sender, System::EventArgs^ e) {
+			ClearToNewTask();
+			panel2->Visible = true;
+			InputData^ iL1A = gcnew InputData;
+			InputData^ iL1N = gcnew InputData;
+			InputData^ iL1Kd = gcnew InputData;
+			InputData^ iL1K1 = gcnew InputData;
+			InputData^ iL1K = gcnew InputData;
+
+
+			int a, k, k1, x1, n, counter = 0;
+			float x, y, kd, dx;
+
+			tB_title->Text = " Лабораторная работа 3.1\r\n Нахождение точек графика и его отрисовка.";
+
+			iL1A->SetLable("Введите положительное a");
+			iL1N->SetLable("Введите положительное N");
+			iL1Kd->SetLable("Введите положительное kd");
+			iL1K1->SetLable("Введите значение для k1");
+
+			if (iL1A->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+				String^ sRes = iL1A->GetText();
+				if (sRes == "") return;
+
+				a = Convert::ToInt32(sRes);
+			}
+			iL1A->Close();
+
+			if (iL1N->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+				String^ sRes = iL1N->GetText();
+				if (sRes == "") return;
+
+				n = Convert::ToInt32(sRes);
+			}
+			iL1N->Close();
+
+			if (iL1Kd->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+				String^ sRes = iL1Kd->GetText();
+				if (sRes == "") return;
+
+				kd = Convert::ToDouble(sRes);
+			}
+			iL1Kd->Close();
+
+			if (iL1K1->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+				String^ sRes = iL1K1->GetText();
+				if (sRes == "") return;
+
+				k1 = Convert::ToInt32(sRes);
+			}
+			iL1K1->Close();
+
+			iL1K->SetLable("Введите значение для k (k>" + k1 + ")");
+
+			if (iL1K->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+				String^ sRes = iL1K->GetText();
+				if (sRes == "") return;
+
+				k = Convert::ToInt32(sRes);
+			}
+			iL1K->Close();
+
+
+			lB_output->Items->Add("a = " + a + "\tN = " + n + "\tkd = " + kd);
+			lB_output->Items->Add("k1 = " + k1 + "\tk = " + k);
+			lB_output->Items->Add("--------------------------------------");
+			x1 = k1 * a;
+			lB_output->Items->Add("Начальное значение аргумента x1: k1 * a = " + x1);
+			dx = kd * a;
+			lB_output->Items->Add("Шаг изменения аргумента dx: kd * a = " + dx);
+			lB_output->Items->Add("--------------------------------------");
+
+			RecOut = new stRecursion[34];
+			memset(RecOut, 0, sizeof(stRecursion) * 34);
+
+			String^ sItem = gcnew String("");
+			System::Globalization::NumberFormatInfo^ ifp = gcnew System::Globalization::NumberFormatInfo;
+			System::Globalization::CultureInfo^ ifc = gcnew System::Globalization::CultureInfo("ru-RU");
+			ifp->NumberDecimalDigits = 4;
+			ifc->NumberFormat->NumberDecimalDigits = 2;
+
+			lB_output->Items->Add("N\tx\ty");
+			for (double i = 0.0; counter < n; i += dx) {
+				x = i;
+				counter++;
+				if ((x < (k * a)) && (x > x1)) {
+					y = a / (exp(x) + cos(x));
+				}
+				else {
+					y = exp(x) + sin(a * x);
+				}
+				
+				sItem = Convert::ToString(counter);
+				sItem += "\t" + x.ToString("n", ifp);
+				sItem += "\t" + y.ToString("N", ifc);
+				lB_output->Items->Add(sItem);
+				RecOut[counter-1].nIdStruct = counter;
+				RecOut[counter-1].nVal = x;
+				RecOut[counter].nSum = y;
+				onAction = act_RECURSION3_1;
+				
+			}
+			Refresh();
+		}
+
+		// Лаба 3.2 Создание нового массива
+		private: System::Void лабораторнаяРабота32ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+			ClearToNewTask();
+			panel2->Visible = true;
+
+			tB_title->Text = " Лабораторная работа 3.2\r\n Cоздать новый массив по двум данным и найти B.";
+
+			const int k = 8, l = 10;
+			double a[k], x[l], y[k], sumx = 0, B = 1;
 			
-			lB_output->Items->Add(p);
-			lB_output->Items->Add(s);
-			lB_output->Items->Add(r);
+
+			for (int i = 0; i < l; i++) {
+				InputData^ inp = gcnew InputData;
+				inp->SetLable("Введите X[" + Convert::ToString(i) + "] элемент массива");
+				if (inp->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+					String^ sRes = inp->GetText();
+					if (sRes == "") return;
+
+					x[i] = Convert::ToInt32(sRes);
+				}
+				inp->Close();
+				sumx += x[i];
+				if (sumx == 0) {
+					lB_output->Items->Add("Сумма массива равна нуля!");
+					lB_output->Items->Add("Снова выбирите пункт меню и ведите его заново");
+					break;
+				}
+			}
+
+			for (int i = 0; i < k; i++) {
+				InputData^ inp = gcnew InputData;
+				inp->SetLable("Введите Y[" + Convert::ToString(i) + "] элемент массива");
+				if (inp->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+					String^ sRes = inp->GetText();
+					if (sRes == "") return;
+					else {
+						y[i] = Convert::ToInt32(sRes);
+						if (y[i] == 0) {
+							lB_output->Items->Add("Ошибка! #Нулевой элемент");
+							lB_output->Items->Add("Снова выбирите пункт меню и ведите его заново");
+							break;
+						}
+					}
+				}
+				inp->Close();
+			}
+			lB_output->Items->Add("Массив X:");
+			lB_output->Items->Add("[" + x[0] + "; " + x[1] + "; " + x[2] + "; " + x[3] + "; " + x[4] + "; " + x[5] + "; " + x[6] + "; " + x[7] + "; " + x[8] + "; " + x[9] + ";]");
+			lB_output->Items->Add("Массив Y:");
+			lB_output->Items->Add("[" + y[0] + "; " + y[1] + "; " + y[2] + "; " + y[3] + "; " + y[4] + "; " + y[5] + "; " + y[6] + "; " + y[7] + ";]");
+			lB_output->Items->Add("--------------------------------------");
+			lB_output->Items->Add("Сумма массива X: " + sumx);
+
+			for (int i = 0; i < k; i++) {
+				a[i] = sumx / pow(y[i], 2);
+				B *= a[i];
+			}
+			lB_output->Items->Add("--------------------------------------");
+			lB_output->Items->Add("Массив A:");
+			lB_output->Items->Add("[" + a[0] + "; " + a[1] + "; " + a[2] + "; " + a[3] + "; " + a[4] + "; " + a[5] + "; " + a[6] + "; " + a[7] + ";]");
+			lB_output->Items->Add("B равно:" + B);
+		}
+
+		// Лаба 4 Матрица
+		private: System::Void лабораторнаяРабота4ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+			ClearToNewTask();
+			panel2->Visible = true;
+
+			tB_title->Text = " Лабораторная работа 4\r\n Поменять местами равные столбцы матрицы.";
+
+			const int x = 4, y = 4;
+			int a[x][y], b[y], total = 0, f, end;
+			bool check = true;
+
+			// Создание матрицы
+			for (int i = 0; i < x; i++) {
+				InputData^ inp = gcnew InputData;
+				inp->SetLable("Введите через пробел, " + Convert::ToString(i + 1) + "ю строку матрицы");
+				if (inp->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+					for (int j = 0; j < y; j++) {
+						a[i][j] = Convert::ToDouble(inp->GetText()->Split()[j]);
+					}
+				}
+				inp->Close();
+			}
+
+			// Вывод матрицы
+			lB_output->Items->Add("Введенная матрица:");
+			for (int i = 0; i < x; i++) {
+				lB_output->Items->Add(Convert::ToString(a[i][0]) + "\t" + Convert::ToString(a[i][1]) + "\t" + Convert::ToString(a[i][2]) + "\t" + Convert::ToString(a[i][3]));
+			}
+			lB_output->Items->Add("");
+
+			lB_output->Items->Add("--------------------------------------");
+			for (int i = 0; i < y; ++i) {
+				int sum = 0;
+				for (int j = 0; j < x; ++j) {
+					sum = sum + a[j][i];
+				}
+				lB_output->Items->Add("Сумма " + (i+1) + " столбца: " + sum);
+				b[i] = sum;
+			}
+			lB_output->Items->Add("");
+			for (int i = 0; i < x; ++i) {
+				for (int j = 0; j < x; ++j) {
+					if (check) {
+						if ((b[i] == b[j]) && (i != j)) {
+							f = i;
+							end = j;
+							lB_output->Items->Add("Столбец " + (f+1) + " равен столбцу " + (end+1));
+							check = false;
+						}
+					}
+				}
+			}
+			lB_output->Items->Add("--------------------------------------");
+			if (check) {
+				lB_output->Items->Add("Нет равных столбцов!");
+			}
+			int chan;
+			for (int i = 0; i < x; i++) {
+				chan = a[i][f];
+				a[i][f] = a[i][end];
+				a[i][end] = chan;
+			}
+
+			lB_output->Items->Add("Измененная матрица:");
+			for (int i = 0; i < x; i++) {
+				lB_output->Items->Add(Convert::ToString(a[i][0]) + "\t" + Convert::ToString(a[i][1]) + "\t" + Convert::ToString(a[i][2]) + "\t" + Convert::ToString(a[i][3]));
+			}
+			
+		}
+		
+		// ------------Сортировка-------------------------------------------------------------------------------------------------------------
+		// Пузырьком
+		private: System::Void пузырькомToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+			ClearToNewTask();
+			panel2->Visible = true;
+			lB_output->MultiColumn = true;
+			tB_title->Text = " Сортировка ПУЗЫРЬКОМ.";
+
+			string words[] = { "Собака", "Кошка", "Лошадь", "Бурундук", "Черепаха", "Рыба", "Овца", "Лемур", "Верблюд", "Зебра",
+				   "Лев", "Пингвин", "Жираф", "Бегемот", "Белка", "Хамелеон", "Змея", "Ящерица", "Антилопа", "Крокодил" };
+			string sortedwords[] = { "Собака", "Кошка", "Лошадь", "Бурундук", "Черепаха", "Рыба", "Овца", "Лемур", "Верблюд", "Зебра",
+				   "Лев", "Пингвин", "Жираф", "Бегемот", "Белка", "Хамелеон", "Змея", "Ящерица", "Антилопа", "Крокодил" };
+
+			int nSize = sizeof(words) / sizeof(words[0]);
+			unsigned char ch, ch2 = 0;
+			bool przn = false;
+			for (int i = 0; i < nSize - 1; i++) {
+				lB_output->Items->Add((i + 1) + ". " + gcnew String(words[i].c_str()));
+			}
+
+			InputData^ inp = gcnew InputData;
+			inp->SetLable("Выберите направление сортироваки('<'поубыванию, '>'повозрастанию)");
+			if (inp->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+				String^ sRes = inp->GetText();
+				if (sRes == "") return;
+				ch = Convert::ToChar(sRes);
+			}
+			inp->Close();
+
+			lB_output->Items->Clear();
+
+			for (int i = 0; i < nSize - 1; i++) {
+				sortedwords[i] = words[i];
+			}
+
+			switch (ch) {
+			case '>':
+				do {
+					przn = false;
+					for (int i = 0; i < nSize - 1; i++)
+						if (sortedwords[i] > sortedwords[i + 1]) {
+							sortedwords[i].swap(sortedwords[i + 1]);
+							przn = true;
+						}
+				} while (przn);
+				break;
+
+			case '<':
+				do {
+					przn = false;
+					for (int i = 0; i < nSize - 1; i++)
+						if (sortedwords[i] < sortedwords[i + 1]) {
+							sortedwords[i].swap(sortedwords[i + 1]);
+							przn = true;
+						}
+				} while (przn);
+				break;
+			}
+			
+			for (int i = 0; i < nSize - 1; i++) {
+				lB_output->Items->Add((i + 1) + ". " + gcnew String(words[i].c_str()) + "\t\t" + (i + 1) + ". " + gcnew String(sortedwords[i].c_str()));
+			}
+		}
+		private: System::Void выборомToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+			string words[]{ "Собака", "Кошка", "Лошадь", "Бурундук", "Черепаха", "Рыба", "Овца", "Лемур", "Верблюд", "Зебра",
+				   "Лев", "Пингвин", "Жираф", "Бегемот", "Белка", "Хамелеон", "Змея", "Ящерица", "Антилопа", "Крокодил" };
+			string sortedArray[]{ "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
+
+
+		}
+		private: System::Void быстраяToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+			string words[]{ "Собака", "Кошка", "Лошадь", "Бурундук", "Черепаха", "Рыба", "Овца", "Лемур", "Верблюд", "Зебра",
+				   "Лев", "Пингвин", "Жираф", "Бегемот", "Белка", "Хамелеон", "Змея", "Ящерица", "Антилопа", "Крокодил" };
+			string sortedArray[]{ "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
+
 
 		}
 
-		// Рекурсия и график
+		// ------------Рекурсия и график-------------------------------------------------------------------------------------------------------------
+
 		public: void Recursion();
 		private: System::Void рекурсияИГрафикToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 			ClearToNewTask();
@@ -724,6 +1167,7 @@ namespace app {
 			onAction = act_RECURSION;
 			Refresh();
 		}
+
 		// Отрисовка
 		private: System::Void MyForm_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 			switch (onAction) {
@@ -782,9 +1226,14 @@ namespace app {
 				} break;
 
 				case act_RECURSION: {
+					panel2->Visible = true;
 					RECT rct = { 500, 200, 1500, 600 };
-					//p_output->Visible = false;
-					drawGraph(e->Graphics, RecOut, 11, rct);
+					drawGraph(e->Graphics, RecOut, 11, rct, 1);
+				} break;
+
+				case act_RECURSION3_1: {
+					RECT rct = { 500, 200, 1500, 600 };
+					drawGraph(e->Graphics, RecOut, 34, rct, 2);
 				} break;
 
 				default: {
@@ -792,13 +1241,13 @@ namespace app {
 				}
 			}
 		}
+
 		// Очистка интерфейса по дабл клику
 		private: System::Void MyForm_MouseDoubleClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
 			onAction = act_NONE;
 			lB_output->Items->Clear();
 			Refresh();
 		}
-
 		// Очистка по кнопке
 		private: System::Void MyForm_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 			switch (e->KeyData) {
@@ -818,6 +1267,7 @@ namespace app {
 				switch (e->KeyValue) {
 					case 27: {
 						onAction = act_BREAK;
+						ClearToNewTask();
 						Refresh();
 						break;
 					}
@@ -851,6 +1301,9 @@ namespace app {
 			/*Labirint(0);
 			panel2->Visible = true;*/
 		}
+
+		// ------------КЛАССЫ-------------------------------------------------------------------------------------------------------------
+		
 		// Активация классов
 		private: System::Void классыToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 			if (mng == 0) { mng = new cManager; }
@@ -868,7 +1321,6 @@ namespace app {
 			fig->SetId(mng->Size());
 			Refresh();
 		}
-
 		// В кон. меню
 		private: System::Void прямоугольникToolStripMenuItem1_Click(System::Object^ sender, System::EventArgs^ e) {
 			if (mng == 0) mng = new cManager;
@@ -886,8 +1338,7 @@ namespace app {
 			mng->AddFigure(fig);
 			fig->SetId(mng->Size());
 			Refresh();
-		}
-		
+		}		
 		// В кон. меню
 		private: System::Void треугольникToolStripMenuItem1_Click(System::Object^ sender, System::EventArgs^ e) {
 			if (mng == 0) mng = new cManager;
@@ -907,7 +1358,6 @@ namespace app {
 			fig->SetId(mng->Size());
 			Refresh();
 		}
-
 		// В кон. меню
 		private: System::Void эллипсToolStripMenuItem1_Click(System::Object^ sender, System::EventArgs^ e) {
 			if (mng == 0) mng = new cManager;
@@ -987,7 +1437,6 @@ namespace app {
 				Refresh();
 			}
 		}
-
 		// Изменить контур фигуры
 		private: System::Void контурToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 			if (colorDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
@@ -1005,6 +1454,7 @@ namespace app {
 				Refresh();
 			}
 		}
+
 		// Движение объекта
 		private: System::Void MyForm_MouseMove(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
 			if (onAction == act_CLASSES) {
@@ -1045,7 +1495,6 @@ namespace app {
 			}
 			delete f_input;
 		}
-
 		// Изменить высоту объекта
 		private: System::Void высотуToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 			InputData^ f_input = gcnew InputData;
@@ -1077,7 +1526,6 @@ namespace app {
 			}
 			delete saveFileDialog1;
 		}
-
 		// Загрузить из файла
 		private: System::Void загрузитьКартуToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 			OpenFileDialog^ openFileDialog1 = gcnew OpenFileDialog();
@@ -1098,7 +1546,6 @@ namespace app {
 			onAction = act_UNIT;
 			Refresh();
 		}
-
 		// Выключить соединение линиями
 		private: System::Void выключитьРежимToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 			onAction = act_CLASSES;
@@ -1119,5 +1566,8 @@ namespace app {
 				}
 			}
 		}
+
+		// ------------КЛАССЫ-------------------------------------------------------------------------------------------------------------
+	
 	};
 }

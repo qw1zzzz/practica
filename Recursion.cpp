@@ -25,6 +25,9 @@ double recSH(double y, double sum, double an, int n, pStRecursion pStRec) {
     return recSH(y, sum, an, n + 1, pStRec);
 }
 
+
+
+
 void MyForm::Recursion() {
     tB_title->Text = "Рекурсия";
 
@@ -64,11 +67,11 @@ void MyForm::Recursion() {
     idt->Close();
 }
 
-void drawGraph(Graphics^ pGraph, pStRecursion pRec, int pSizeRec, RECT pstRect) {
+void drawGraph(Graphics^ pGraph, pStRecursion pRec, int pSizeRec, RECT pstRect, int mode) {
     if (pSizeRec == 0 | pRec == NULL) return;
 
     float nMinAxisX, nMaxAxisX, nMinAxisY, nMaxAxisY; // Мин и Макс значения по осям
-    
+
     // Определить границы графика
     nMinAxisY = nMaxAxisY = pRec[0].nVal;
     nMinAxisX = pRec[0].nIdStruct;
@@ -89,13 +92,13 @@ void drawGraph(Graphics^ pGraph, pStRecursion pRec, int pSizeRec, RECT pstRect) 
 
     Pen^ WhitePen = gcnew Pen(Color::White, 2);
     pGraph->DrawRectangle(WhitePen, pstRect.left + 75, pstRect.top, pstRect.right - 525, pstRect.bottom - 90);
-    
+
     Font^ font = gcnew Font("New Time Roman", 16);
     SolidBrush^ brush = gcnew SolidBrush(Color::WhiteSmoke);
     String^ sHeading = "График рекурентного соотношения";
     int nHeadSize = sHeading->Length, nInd = 150;
     int zInd = ((pstRect.right - pstRect.left) - font->Size * sHeading->Length) / 2 + nInd;
-    
+
     pGraph->DrawString(sHeading, font, brush, pstRect.left + zInd, pstRect.top);
 
     RECT rAxisX(pstRect);
@@ -107,29 +110,47 @@ void drawGraph(Graphics^ pGraph, pStRecursion pRec, int pSizeRec, RECT pstRect) 
     drawAxisY(pGraph, rAxisX, nMinAxisY, nMaxAxisY, 5);         // Отрсовать ось Y
 
     float nPxRepVal = (rAxisX.right - rAxisX.left);             // Кол-во пикселей по горизонтали
-    
+
     int nY = (int)(rAxisX.bottom - (pRec[0].nVal - nMinAxisY) * (rAxisX.bottom - rAxisX.top) / (nMaxAxisY - nMinAxisY));
     int nSY = (int)(rAxisX.bottom - (pRec[0].nSum - nMinAxisY) * (rAxisX.bottom - rAxisX.top) / (nMaxAxisY - nMinAxisY));
     int nPxOld = rAxisX.left;
 
     WhitePen->Width = 4;
-    for (int i = 0; i < pSizeRec; i++) {
-        float nPxStep = rAxisX.left + (i)*nPxRepVal / (pSizeRec - 1);
-        int nY2 = (int)(rAxisX.bottom - (pRec[i].nVal - nMinAxisY) * (rAxisX.bottom - rAxisX.top) / (nMaxAxisY - nMinAxisY));
+    switch (mode) {
+        case 1: {
+            for (int i = 0; i < pSizeRec; i++) {
+                float nPxStep = rAxisX.left + (i)*nPxRepVal / (pSizeRec - 1);
+                int nY2 = (int)(rAxisX.bottom - (pRec[i].nVal - nMinAxisY) * (rAxisX.bottom - rAxisX.top) / (nMaxAxisY - nMinAxisY));
 
-        WhitePen->Color = Color::Red;
-        pGraph->DrawLine(WhitePen, (int)nPxOld, nY, (int)nPxStep, nY2);
-        nY = nY2;
+                WhitePen->Color = Color::Red;
+                pGraph->DrawLine(WhitePen, (int)nPxOld, nY, (int)nPxStep, nY2);
+                nY = nY2;
 
-        int nSY2 = (int)(rAxisX.bottom - (pRec[i].nSum - nMinAxisY) * (rAxisX.bottom - rAxisX.top) / (nMaxAxisY - nMinAxisY));
-        WhitePen->Color = Color::Blue;
-        pGraph->DrawLine(WhitePen, (int)nPxOld, nSY, (int)nPxStep, nSY2);
-        nSY = nSY2;
+                int nSY2 = (int)(rAxisX.bottom - (pRec[i].nSum - nMinAxisY) * (rAxisX.bottom - rAxisX.top) / (nMaxAxisY - nMinAxisY));
+                WhitePen->Color = Color::Blue;
+                pGraph->DrawLine(WhitePen, (int)nPxOld, nSY, (int)nPxStep, nSY2);
+                nSY = nSY2;
 
-        nPxOld = nPxStep;
+                nPxOld = nPxStep;
+            }
+        } break;
+
+        case 2: {
+            for (int i = 0; i < pSizeRec; i++) {
+                float nPxStep = rAxisX.left + (i)*nPxRepVal / (pSizeRec - 1);
+                int nY2 = (int)(rAxisX.bottom - (pRec[i].nVal - nMinAxisY) * (rAxisX.bottom - rAxisX.top) / (nMaxAxisY - nMinAxisY));
+
+                int nSY2 = (int)(rAxisX.bottom - (pRec[i].nSum - nMinAxisY) * (rAxisX.bottom - rAxisX.top) / (nMaxAxisY - nMinAxisY));
+                WhitePen->Color = Color::Blue;
+                pGraph->DrawLine(WhitePen, (int)nPxOld, nSY, (int)nPxStep, nSY2);
+                nSY = nSY2;
+
+                nPxOld = nPxStep;
+            }
+        } break;
+                      
     }
 }
-
 // Поворот текста на оси Y
 void DrawTextRotate(Graphics^ pGraph, String^ pText, System::Drawing::Rectangle pRect, Font^ pFont, Brush^ pBrush, float angle) {
     System::Drawing::Rectangle rect(0, 0, pRect.Height, pRect.Width);
