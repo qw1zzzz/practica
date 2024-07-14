@@ -219,7 +219,7 @@ MyAction LabirintDraw(System::Drawing::Graphics^ graph) {
 			}
 		}
 		//Обработка завершения
-		if ((nRow == nERow) && (nCol && nECol)){
+		if ((nRow == nERow) && (nCol == nECol)){
 			nRow = 0;
 			nCol = 16;
 			return act_LABIRINTEXIT;

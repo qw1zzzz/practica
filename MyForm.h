@@ -138,6 +138,9 @@ namespace app {
 			this->лабиринтToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->рекурсияИГрафикToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->сортировкаToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->пузырькомToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->выборомToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->быстраяToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->шифрованиеToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->классыToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->создатьОбъектToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -173,9 +176,6 @@ namespace app {
 			this->colorDialog1 = (gcnew System::Windows::Forms::ColorDialog());
 			this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->saveFileDialog1 = (gcnew System::Windows::Forms::SaveFileDialog());
-			this->пузырькомToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->выборомToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->быстраяToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menu->SuspendLayout();
 			this->panel1->SuspendLayout();
 			this->panel2->SuspendLayout();
@@ -268,7 +268,7 @@ namespace app {
 			// лабиринтToolStripMenuItem1
 			// 
 			this->лабиринтToolStripMenuItem1->Name = L"лабиринтToolStripMenuItem1";
-			this->лабиринтToolStripMenuItem1->Size = System::Drawing::Size(159, 26);
+			this->лабиринтToolStripMenuItem1->Size = System::Drawing::Size(180, 26);
 			this->лабиринтToolStripMenuItem1->Text = L"Лабиринт";
 			this->лабиринтToolStripMenuItem1->Click += gcnew System::EventHandler(this, &MyForm::лабиринтToolStripMenuItem1_Click);
 			// 
@@ -288,6 +288,27 @@ namespace app {
 			this->сортировкаToolStripMenuItem->Name = L"сортировкаToolStripMenuItem";
 			this->сортировкаToolStripMenuItem->Size = System::Drawing::Size(116, 25);
 			this->сортировкаToolStripMenuItem->Text = L"Сортировка";
+			// 
+			// пузырькомToolStripMenuItem
+			// 
+			this->пузырькомToolStripMenuItem->Name = L"пузырькомToolStripMenuItem";
+			this->пузырькомToolStripMenuItem->Size = System::Drawing::Size(165, 26);
+			this->пузырькомToolStripMenuItem->Text = L"Пузырьком";
+			this->пузырькомToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::пузырькомToolStripMenuItem_Click);
+			// 
+			// выборомToolStripMenuItem
+			// 
+			this->выборомToolStripMenuItem->Name = L"выборомToolStripMenuItem";
+			this->выборомToolStripMenuItem->Size = System::Drawing::Size(165, 26);
+			this->выборомToolStripMenuItem->Text = L"Выбором";
+			this->выборомToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::выборомToolStripMenuItem_Click);
+			// 
+			// быстраяToolStripMenuItem
+			// 
+			this->быстраяToolStripMenuItem->Name = L"быстраяToolStripMenuItem";
+			this->быстраяToolStripMenuItem->Size = System::Drawing::Size(165, 26);
+			this->быстраяToolStripMenuItem->Text = L"Быстрая";
+			this->быстраяToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::быстраяToolStripMenuItem_Click);
 			// 
 			// шифрованиеToolStripMenuItem
 			// 
@@ -564,27 +585,6 @@ namespace app {
 			// 
 			this->openFileDialog1->FileName = L"openFileDialog1";
 			// 
-			// пузырькомToolStripMenuItem
-			// 
-			this->пузырькомToolStripMenuItem->Name = L"пузырькомToolStripMenuItem";
-			this->пузырькомToolStripMenuItem->Size = System::Drawing::Size(180, 26);
-			this->пузырькомToolStripMenuItem->Text = L"Пузырьком";
-			this->пузырькомToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::пузырькомToolStripMenuItem_Click);
-			// 
-			// выборомToolStripMenuItem
-			// 
-			this->выборомToolStripMenuItem->Name = L"выборомToolStripMenuItem";
-			this->выборомToolStripMenuItem->Size = System::Drawing::Size(180, 26);
-			this->выборомToolStripMenuItem->Text = L"Выбором";
-			this->выборомToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::выборомToolStripMenuItem_Click);
-			// 
-			// быстраяToolStripMenuItem
-			// 
-			this->быстраяToolStripMenuItem->Name = L"быстраяToolStripMenuItem";
-			this->быстраяToolStripMenuItem->Size = System::Drawing::Size(180, 26);
-			this->быстраяToolStripMenuItem->Text = L"Быстрая";
-			this->быстраяToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::быстраяToolStripMenuItem_Click);
-			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -652,7 +652,9 @@ namespace app {
 				if (sRes == "") {
 					return;
 				}
-
+				lB_output->Items->Add("Пользователь ввел маску:" + f_input->GetText());
+				lB_output->Items->Add("--------------------------------------");
+				lB_output->Items->Add("Числа удовлетворяющие условию маски: ");
 				int nRes = Convert::ToInt32(sRes);
 				int nNumber, nCount = 0;
 				for (int i = 0; i < 20; i++) {
@@ -856,7 +858,7 @@ namespace app {
 			int a, k, k1, x1, n, counter = 0;
 			float x, y, kd, dx;
 
-			tB_title->Text = " Лабораторная работа 3.1\r\n Задание: Расчитать .";
+			tB_title->Text = " Лабораторная работа 3.1\r\n Задание: Организация цикла с несколькими параметрами и проверкой условий.";
 
 			iL1A->SetLable("Введите положительное a");
 			iL1N->SetLable("Введите положительное N");
@@ -921,7 +923,7 @@ namespace app {
 			String^ sItem = gcnew String("");
 			System::Globalization::NumberFormatInfo^ ifp = gcnew System::Globalization::NumberFormatInfo;
 			System::Globalization::CultureInfo^ ifc = gcnew System::Globalization::CultureInfo("ru-RU");
-			ifp->NumberDecimalDigits = 4;
+			ifp->NumberDecimalDigits = 1;
 			ifc->NumberFormat->NumberDecimalDigits = 2;
 
 			lB_output->Items->Add("N\tx\ty");
@@ -1389,7 +1391,7 @@ namespace app {
 		// Лабиринт
 		private: System::Void лабиринтToolStripMenuItem1_Click(System::Object^ sender, System::EventArgs^ e) {
 			panel2->Visible = false;
-			tB_title->Text = "Задача Лабиринт \r\nДля управления используйте стрелки";
+			tB_title->Text = "Игра <Лабиринт> \r\n Для управления жуком используйте стрелки";
 			onAction = act_LABIRINT;
 			this->Focus();
 			Refresh();
@@ -1664,5 +1666,6 @@ namespace app {
 
 		// ------------КЛАССЫ-------------------------------------------------------------------------------------------------------------
 	
-	};
+	
+};
 }

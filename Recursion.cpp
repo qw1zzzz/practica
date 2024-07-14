@@ -29,7 +29,7 @@ double recSH(double y, double sum, double an, int n, pStRecursion pStRec) {
 
 
 void MyForm::Recursion() {
-    tB_title->Text = "Рекурсия";
+    tB_title->Text = "Расчет рекурентного соотношения последовательности";
 
     float y = 0, sum = 0, an1 = 0;
 
@@ -53,7 +53,7 @@ void MyForm::Recursion() {
         ifc->NumberFormat->NumberDecimalDigits = 4;
 
 
-        lB_output->Items->Add("№\tЗначение\t\tНакопленная сумма");
+        lB_output->Items->Add("№\tЗначение\tНакопленная сумма");
         for (int i = 0; i < 11; i++) {
             sItem = Convert::ToString(RecOut[i].nIdStruct);
             sItem += "\t" + RecOut[i].nVal.ToString("n", ifp);
@@ -91,11 +91,17 @@ void drawGraph(Graphics^ pGraph, pStRecursion pRec, int pSizeRec, RECT pstRect, 
     // Отрисовка места размещения графика
 
     Pen^ WhitePen = gcnew Pen(Color::White, 2);
-    pGraph->DrawRectangle(WhitePen, pstRect.left + 30, pstRect.top, pstRect.right - 525, pstRect.bottom - 90);
+    pGraph->DrawRectangle(WhitePen, pstRect.left, pstRect.top, pstRect.right - 450, pstRect.bottom - 90);
 
     Font^ font = gcnew Font("New Time Roman", 16);
     SolidBrush^ brush = gcnew SolidBrush(Color::WhiteSmoke);
-    String^ sHeading = "График рекурентного соотношения";
+    String^ sHeading = "";
+    if (mode == 1) {
+        sHeading = "График рекурентного соотношения";
+    }
+    else if (mode == 2) {
+        sHeading = "График параметрической функции";
+    }
     int nHeadSize = sHeading->Length, nInd = 150;
     int zInd = ((pstRect.right - pstRect.left) - font->Size * sHeading->Length) / 2 + nInd;
 
@@ -136,7 +142,6 @@ void drawGraph(Graphics^ pGraph, pStRecursion pRec, int pSizeRec, RECT pstRect, 
         } break;
 
         case 2: {
-            sHeading = "График параметрической функции";
             for (int i = 0; i < pSizeRec; i++) {
                 float nPxStep = rAxisX.left + (i)*nPxRepVal / (pSizeRec - 1);
                 int nY2 = (int)(rAxisX.bottom - (pRec[i].nVal - nMinAxisY) * (rAxisX.bottom - rAxisX.top) / (nMaxAxisY - nMinAxisY));
@@ -183,9 +188,17 @@ void drawAxisX(Graphics^ pGraph, RECT pArea, float pMin, float pMax, int pSec, i
     // Шрифт на оси X
     Font^ font = gcnew Font("New Time Roman", 12);
     SolidBrush^ brush = gcnew SolidBrush(Color::White);
-    String^ sAxis = gcnew String("Аргумент функции");
+    String^ sAxis = gcnew String("");
+    if (mod == 1) {
+        String^ sAxis = gcnew String("Ось X");
+    }
+    else if (mod == 2) {
+        String^ sAxis = gcnew String("Аргумент функции");
+    }
+   
     int indAxis = ((pArea.right - pArea.left) - sAxis->Length) / 2 - 60 ;
     pGraph->DrawString(sAxis, font, brush, pArea.left + indAxis, pArea.bottom + 20);
+
 
     float nPxPerVal = (pArea.right - pArea.left) / (pMax - pMin);
 
@@ -216,8 +229,14 @@ void drawAxisY(Graphics^ pGraph, RECT pArea, float pMin, float pMax, int pSec, i
 
     Font^ font = gcnew Font("New Time Roman", 12);
     SolidBrush^ brush = gcnew SolidBrush(Color::WhiteSmoke);
-
-    String^ label = gcnew String("Значение");
+    String^ label = gcnew String("");
+    if (mod == 1) {
+        String^ label = gcnew String("Ось Y");
+    }
+    else if (mod == 2) {
+        String^ label = gcnew String("Значение по Y");
+    }
+    
     int indexis = ((pArea.bottom - pArea.top) - label->Length) / 2;
 
     System::Drawing::Rectangle rect(int(pArea.left - font->Height), pArea.top, int(font->Height), int(pArea.bottom - pArea.top));
