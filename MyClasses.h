@@ -9,6 +9,7 @@ using namespace System::Drawing;
 using namespace System::Runtime::InteropServices;
 
 void StringToChar(System::String^ s, std::string& os);
+void qSort(string* sArr, int nFirst, int nLast, int dir);
 System::String^ CharToString(char* str);
 char* EncodeText(char* psText);
 char* DecodeText(char* psText);

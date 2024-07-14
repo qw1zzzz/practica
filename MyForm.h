@@ -679,6 +679,7 @@ namespace app {
 		// Шифрование
 		private: System::Void шифрованиеToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 			ClearToNewTask();
+			panel2->Visible = true;
 			InputData^ ipd = gcnew InputData;
 
 			tB_title->Text = " Перевод строки в шифрованное состояние и обратно.";
@@ -713,7 +714,7 @@ namespace app {
 			InputData^ iL1S = gcnew InputData;
 			InputData^ iL1R = gcnew InputData;
 			int p, s, r, q, t1, t2, iT;
-			tB_title->Text = " Лабораторная работа 2.1 Найти индекс наибольшего T\r\n Даны переменные P, S, R. Определить: Q, T1, T2 и индекс максимального T.";
+			tB_title->Text = " Лабораторная работа 2.1\r\n Задание: Найти индекс наибольшего T.\r\n Даны переменные P, S, R. Определить: Q, T1, T2 и индекс максимального T.";
 			
 			iL1P->SetLable("Введите переменную P");
 
@@ -786,7 +787,7 @@ namespace app {
 			int a, b, c;
 			std::string answer;
 
-			tB_title->Text = " Лабораторная работа 2.2 \r\n Определить является ли треугольник равнобедренным.";
+			tB_title->Text = " Лабораторная работа 2.2 \r\n Задание: Определить является ли треугольник равнобедренным.";
 
 			iL1A->SetLable("Введите сторону A");
 			iL1B->SetLable("Введите сторону B");
@@ -855,7 +856,7 @@ namespace app {
 			int a, k, k1, x1, n, counter = 0;
 			float x, y, kd, dx;
 
-			tB_title->Text = " Лабораторная работа 3.1\r\n Нахождение точек графика и его отрисовка.";
+			tB_title->Text = " Лабораторная работа 3.1\r\n Задание: Расчитать .";
 
 			iL1A->SetLable("Введите положительное a");
 			iL1N->SetLable("Введите положительное N");
@@ -1088,28 +1089,27 @@ namespace app {
 			lB_output->MultiColumn = true;
 			tB_title->Text = " Сортировка ПУЗЫРЬКОМ.";
 
-			string words[] = { "Собака", "Кошка", "Лошадь", "Бурундук", "Черепаха", "Рыба", "Овца", "Лемур", "Верблюд", "Зебра",
+			string words[20] = { "Собака", "Кошка", "Лошадь", "Бурундук", "Черепаха", "Рыба", "Овца", "Лемур", "Верблюд", "Зебра",
 				   "Лев", "Пингвин", "Жираф", "Бегемот", "Белка", "Хамелеон", "Змея", "Ящерица", "Антилопа", "Крокодил" };
-			string sortedwords[] = { "Собака", "Кошка", "Лошадь", "Бурундук", "Черепаха", "Рыба", "Овца", "Лемур", "Верблюд", "Зебра",
-				   "Лев", "Пингвин", "Жираф", "Бегемот", "Белка", "Хамелеон", "Змея", "Ящерица", "Антилопа", "Крокодил" };
+			string sortedwords[20] = {};
 
 			int nSize = sizeof(words) / sizeof(words[0]);
 			unsigned char ch, ch2 = 0;
 			bool przn = false;
 			lB_output->Items->Add("Исходный массив: ");
-			for (int i = 0; i < nSize - 1; i++) {
+			for (int i = 0; i < nSize; i++) {
 				lB_output->Items->Add((i + 1) + ". " + gcnew String(words[i].c_str()));
 			}
 
 			InputData^ inp = gcnew InputData;
-			inp->SetLable("Выберите направление сортироваки('<'поубыванию, '>'повозрастанию)");
+			inp->SetLable("Укажите направление сортироваки('<', '>')");
 			if (inp->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
 				String^ sRes = inp->GetText();
 				if (sRes == "") return;
 				ch = Convert::ToChar(sRes);
 			}
 			inp->Close();
-			for (int i = 0; i < nSize - 1; i++) {
+			for (int i = 0; i < nSize; i++) {
 				sortedwords[i] = words[i];
 			}
 
@@ -1139,23 +1139,118 @@ namespace app {
 
 			lB_output->Items->Add("--------------------------------------");
 			lB_output->Items->Add("Отсортированный массив: ");
-			for (int i = 0; i < nSize - 1; i++) {
+			for (int i = 0; i < nSize; i++) {
 				lB_output->Items->Add((i + 1) + ". " + gcnew String(sortedwords[i].c_str()));
 			}
 		}
+		// Выбором
 		private: System::Void выборомToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-			string words[]{ "Собака", "Кошка", "Лошадь", "Бурундук", "Черепаха", "Рыба", "Овца", "Лемур", "Верблюд", "Зебра",
+			ClearToNewTask();
+			panel2->Visible = true;
+			lB_output->MultiColumn = true;
+			tB_title->Text = " Сортировка ВЫБОРОМ.";
+
+			string words[20] = { "Собака", "Кошка", "Лошадь", "Бурундук", "Черепаха", "Рыба", "Овца", "Лемур", "Верблюд", "Зебра",
 				   "Лев", "Пингвин", "Жираф", "Бегемот", "Белка", "Хамелеон", "Змея", "Ящерица", "Антилопа", "Крокодил" };
-			string sortedArray[]{ "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
+			string sortedwords[20] = {};
 
+			int nSize = sizeof(words) / sizeof(words[0]);
+			unsigned char ch, ch2 = 0;
+			bool przn = false;
+			lB_output->Items->Add("Исходный массив: ");
+			for (int i = 0; i < nSize; i++) {
+				lB_output->Items->Add((i + 1) + ". " + gcnew String(words[i].c_str()));
+			}
 
+			InputData^ inp = gcnew InputData;
+			inp->SetLable("Укажите направление сортироваки('<', '>')");
+			if (inp->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+				String^ sRes = inp->GetText();
+				if (sRes == "") return;
+				ch = Convert::ToChar(sRes);
+			}
+			inp->Close();
+			for (int i = 0; i < nSize; i++) {
+				sortedwords[i] = words[i];
+			}
+
+			switch (ch) {
+			case '>':
+				for (int i = 0; i < nSize - 1; i++) {
+					for (int j = i + 1; j < nSize; j++) {
+						if (sortedwords[i] > sortedwords[j]) {
+							string buf = sortedwords[i];
+							sortedwords[i] = sortedwords[j];
+							sortedwords[j] = buf;
+						}
+					}
+				} break;
+
+			case '<':
+				for (int i = 0; i < nSize - 1; i++) {
+					for (int j = i + 1; j < nSize; j++) {
+						if (sortedwords[i] < sortedwords[j]) {
+							string buf = sortedwords[i];
+							sortedwords[i] = sortedwords[j];
+							sortedwords[j] = buf;
+						}
+					}
+				}
+				break;
+			} 
+
+			lB_output->Items->Add("--------------------------------------");
+			lB_output->Items->Add("Отсортированный массив: ");
+			for (int i = 0; i < nSize; i++) {
+				lB_output->Items->Add((i + 1) + ". " + gcnew String(sortedwords[i].c_str()));
+			}
 		}
+		// Быстрая
 		private: System::Void быстраяToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-			string words[]{ "Собака", "Кошка", "Лошадь", "Бурундук", "Черепаха", "Рыба", "Овца", "Лемур", "Верблюд", "Зебра",
+			ClearToNewTask();
+			panel2->Visible = true;
+			lB_output->MultiColumn = true;
+			tB_title->Text = " БЫСТРАЯ сортировка.";
+
+			string words[20] = { "Собака", "Кошка", "Лошадь", "Бурундук", "Черепаха", "Рыба", "Овца", "Лемур", "Верблюд", "Зебра",
 				   "Лев", "Пингвин", "Жираф", "Бегемот", "Белка", "Хамелеон", "Змея", "Ящерица", "Антилопа", "Крокодил" };
-			string sortedArray[]{ "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
+			string sortedwords[20] = {};
 
+			int nSize = sizeof(words) / sizeof(words[0]);
+			unsigned char ch, ch2 = 0;
+			bool przn = false;
+			lB_output->Items->Add("Исходный массив: ");
+			for (int i = 0; i < nSize; i++) {
+				lB_output->Items->Add((i + 1) + ". " + gcnew String(words[i].c_str()));
+			}
 
+			InputData^ inp = gcnew InputData;
+			inp->SetLable("Укажите направление сортироваки('<', '>')");
+			if (inp->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+				String^ sRes = inp->GetText();
+				if (sRes == "") return;
+				ch = Convert::ToChar(sRes);
+			}
+			inp->Close();
+			for (int i = 0; i < nSize; i++) {
+				sortedwords[i] = words[i];
+			}
+
+			switch (ch) {
+			case '>':
+				qSort(sortedwords, 0, (sizeof(words) / sizeof(words[0])) - 1, 1);
+				break;
+
+			case '<':
+				qSort(sortedwords, 0, (sizeof(words) / sizeof(words[0])) - 1, -1);
+				break;
+			}
+
+			lB_output->Items->Add("--------------------------------------");
+			lB_output->Items->Add("Отсортированный массив: ");
+			for (int i = 0; i < nSize; i++) {
+				lB_output->Items->Add((i + 1) + ". " + gcnew String(sortedwords[i].c_str()));
+			}
 		}
 
 		// ------------Рекурсия и график-------------------------------------------------------------------------------------------------------------

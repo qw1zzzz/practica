@@ -51,3 +51,17 @@ int GetValueInt(std::string pText) {
 		nval = atoi(pText.substr(npos + 1).c_str());
 	return nval;
 }
+
+void qSort(string* sArr, int nFirst, int nLast, int dir) {
+	string sMid = sArr[(nFirst + nLast) / 2];
+	int i = nFirst, j = nLast;
+	do {
+		while (sArr[i].compare(sMid) * dir < 0) i++;
+		while (sArr[j].compare(sMid) * dir > 0) j--;
+		if (i < j) sArr[i].swap(sArr[j]);
+		if (i <= j) i++;
+		if (i <= j) j--;
+	} while (i < j);
+	if (nFirst < j) qSort(sArr, nFirst, j, dir);
+	if (i < nLast) qSort(sArr, i, nLast, dir);
+}

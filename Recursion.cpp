@@ -91,7 +91,7 @@ void drawGraph(Graphics^ pGraph, pStRecursion pRec, int pSizeRec, RECT pstRect, 
     // Отрисовка места размещения графика
 
     Pen^ WhitePen = gcnew Pen(Color::White, 2);
-    pGraph->DrawRectangle(WhitePen, pstRect.left + 75, pstRect.top, pstRect.right - 525, pstRect.bottom - 90);
+    pGraph->DrawRectangle(WhitePen, pstRect.left + 30, pstRect.top, pstRect.right - 525, pstRect.bottom - 90);
 
     Font^ font = gcnew Font("New Time Roman", 16);
     SolidBrush^ brush = gcnew SolidBrush(Color::WhiteSmoke);
@@ -106,8 +106,8 @@ void drawGraph(Graphics^ pGraph, pStRecursion pRec, int pSizeRec, RECT pstRect, 
     rAxisX.left += 100;
     rAxisX.right += 20;
     rAxisX.bottom += 60;
-    drawAxisX(pGraph, rAxisX, nMinAxisX, nMaxAxisX, pSizeRec);  // Отрисовать ось X
-    drawAxisY(pGraph, rAxisX, nMinAxisY, nMaxAxisY, 5);         // Отрсовать ось Y
+    drawAxisX(pGraph, rAxisX, nMinAxisX, nMaxAxisX, pSizeRec, mode);  // Отрисовать ось X
+    drawAxisY(pGraph, rAxisX, nMinAxisY, nMaxAxisY, 5, mode);         // Отрсовать ось Y
 
     float nPxRepVal = (rAxisX.right - rAxisX.left);             // Кол-во пикселей по горизонтали
 
@@ -136,6 +136,7 @@ void drawGraph(Graphics^ pGraph, pStRecursion pRec, int pSizeRec, RECT pstRect, 
         } break;
 
         case 2: {
+            sHeading = "График параметрической функции";
             for (int i = 0; i < pSizeRec; i++) {
                 float nPxStep = rAxisX.left + (i)*nPxRepVal / (pSizeRec - 1);
                 int nY2 = (int)(rAxisX.bottom - (pRec[i].nVal - nMinAxisY) * (rAxisX.bottom - rAxisX.top) / (nMaxAxisY - nMinAxisY));
@@ -168,7 +169,7 @@ void DrawTextRotate(Graphics^ pGraph, String^ pText, System::Drawing::Rectangle 
 }
 
 // Отрисовка оси X
-void drawAxisX(Graphics^ pGraph, RECT pArea, float pMin, float pMax, int pSec) {
+void drawAxisX(Graphics^ pGraph, RECT pArea, float pMin, float pMax, int pSec, int mod) {
     PointF p1, p2;
     p1.X = pArea.left;
     p1.Y = pArea.bottom;
@@ -199,7 +200,7 @@ void drawAxisX(Graphics^ pGraph, RECT pArea, float pMin, float pMax, int pSec) {
     }
 }
 
-void drawAxisY(Graphics^ pGraph, RECT pArea, float pMin, float pMax, int pSec) {
+void drawAxisY(Graphics^ pGraph, RECT pArea, float pMin, float pMax, int pSec, int mod) {
     PointF p1, p2;
     p1.X = pArea.left;
     p1.Y = pArea.bottom;
@@ -226,8 +227,15 @@ void drawAxisY(Graphics^ pGraph, RECT pArea, float pMin, float pMax, int pSec) {
     String^ sItem = gcnew String("");
     System::Globalization::NumberFormatInfo^ ifp = gcnew System::Globalization::NumberFormatInfo;
     System::Globalization::CultureInfo^ ifc = gcnew System::Globalization::CultureInfo("ru-RU");
-    ifp->NumberDecimalDigits = 4;
-    ifc->NumberFormat->NumberDecimalDigits = 4;
+    if (mod == 1) {
+        ifp->NumberDecimalDigits = 4;
+        ifc->NumberFormat->NumberDecimalDigits = 4;
+    }
+    else if (mod == 2){
+        ifp->NumberDecimalDigits = 0;
+        ifc->NumberFormat->NumberDecimalDigits = 0;
+    }
+    
 
     for (int i = 0; i < pSec + 1; i++) {
         float nPxStep = pArea.bottom - (i)*nPxPerVal * (pMax - pMin) / pSec;

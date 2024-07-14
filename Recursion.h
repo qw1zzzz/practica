@@ -19,7 +19,7 @@ typedef struct _stRecursion {
 
 static CURSORINFO pci;
 
-void drawAxisX(Graphics^ pGraph, RECT pArea, float pMin, float pMax, int pSec);
-void drawAxisY(Graphics^ pGraph, RECT pArea, float pMin, float pMax, int pSec);
+void drawAxisX(Graphics^ pGraph, RECT pArea, float pMin, float pMax, int pSec, int mod);
+void drawAxisY(Graphics^ pGraph, RECT pArea, float pMin, float pMax, int pSec, int mod);
 void drawGraph(Graphics^ pGraph, pStRecursion pRec, int pSizeRec, RECT pstRect, int mode);
 void DrawTextRotate(Graphics^ pGraph, String^ pText, System::Drawing::Rectangle pRect, Font^ pFont, Brush^ pBrush, float angle);
